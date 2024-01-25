@@ -23,8 +23,19 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class HomePageView extends StatelessWidget {
+class HomePageView extends StatefulWidget {
   const HomePageView({super.key});
+
+  @override
+  State<HomePageView> createState() => _HomePageViewState();
+}
+
+class _HomePageViewState extends State<HomePageView> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<HomePageCubit>().getWeatherForCurrentLocation();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -15,14 +15,20 @@ class $AssetsAnimationsGen {
   /// File path: assets/animations/balloonist.riv
   String get balloonist => 'assets/animations/balloonist.riv';
 
+  /// File path: assets/animations/gps.json
+  String get gps => 'assets/animations/gps.json';
+
   /// File path: assets/animations/rain.json
   String get rain => 'assets/animations/rain.json';
+
+  /// File path: assets/animations/sun.json
+  String get sun => 'assets/animations/sun.json';
 
   /// File path: assets/animations/wind.json
   String get wind => 'assets/animations/wind.json';
 
   /// List of all assets
-  List<String> get values => [balloonist, rain, wind];
+  List<String> get values => [balloonist, gps, rain, sun, wind];
 }
 
 class $AssetsImagesGen {

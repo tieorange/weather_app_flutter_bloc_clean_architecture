@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:weather_app_flutter/features/home_page/presentation/view/home_page.dart';
+import 'package:weather_app_flutter/features/introduction_page/presentation/view/introduction_page.dart';
 import 'package:weather_app_flutter/features/splash_page/presentation/view/splash_screen.dart';
 
 enum RouteType {
@@ -13,6 +14,7 @@ enum RouteType {
 
 enum AppRoutes {
   splashScreen('/splashScreen'),
+  introductionScreen('/introduction'),
   home('/home'),
   settings('/settings');
 
@@ -28,6 +30,9 @@ abstract class AppRouter {
     AppRoutes.splashScreen.routeName: (context) {
       return SplashPage();
     },
+    AppRoutes.introductionScreen.routeName: (context) {
+      return IntroductionPage();
+    },
     AppRoutes.settings.routeName: (context) {
       return const HomePage();
     },
@@ -37,10 +42,11 @@ abstract class AppRouter {
   };
 
   static void goToHome(BuildContext context) {
-    _navigate(
-      context: context,
-      route: AppRoutes.home,
-    );
+    popAndPushNamed(context, AppRoutes.home);
+  }
+
+  static void goToIntroductionScreen(BuildContext context) {
+    popAndPushNamed(context, AppRoutes.introductionScreen);
   }
 
   static Future<dynamic> goToSettings(BuildContext context) async {

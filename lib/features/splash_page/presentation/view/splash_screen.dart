@@ -4,9 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:rive/rive.dart';
 import 'package:weather_app_flutter/core/generated/assets.gen.dart';
+import 'package:weather_app_flutter/core/navigation/app_router.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
+
+  @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 3), () {
+      AppRouter.goToIntroductionScreen(context);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

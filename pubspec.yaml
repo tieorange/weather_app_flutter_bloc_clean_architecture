@@ -27,6 +27,7 @@ dependencies:
   internet_connection_checker: ^1.0.0+1
   get_it: ^7.6.7
   google_places_autocomplete_text_field: ^0.1.2
+  rive: ^0.12.4
 
 dev_dependencies:
   bloc_test: ^9.1.5

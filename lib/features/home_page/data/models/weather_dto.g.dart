@@ -96,7 +96,7 @@ _$WeatherImpl _$$WeatherImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       main: $enumDecode(_$WeatherTypeEnumMap, json['main']),
       description: $enumDecode(_$DescriptionEnumMap, json['description']),
-      icon: $enumDecode(_$IconEnumMap, json['icon']),
+      icon: $enumDecode(_$WeatherIconEnumMap, json['icon']),
     );
 
 Map<String, dynamic> _$$WeatherImplToJson(_$WeatherImpl instance) =>
@@ -104,7 +104,7 @@ Map<String, dynamic> _$$WeatherImplToJson(_$WeatherImpl instance) =>
       'id': instance.id,
       'main': _$WeatherTypeEnumMap[instance.main]!,
       'description': _$DescriptionEnumMap[instance.description]!,
-      'icon': _$IconEnumMap[instance.icon]!,
+      'icon': _$WeatherIconEnumMap[instance.icon]!,
     };
 
 const _$WeatherTypeEnumMap = {
@@ -130,7 +130,7 @@ const _$DescriptionEnumMap = {
   Description.MIST: 'mist',
 };
 
-const _$IconEnumMap = {
+const _$WeatherIconEnumMap = {
   WeatherIcon.THE_01_D: '01d',
   WeatherIcon.THE_01_N: '01n',
   WeatherIcon.THE_02_D: '02d',

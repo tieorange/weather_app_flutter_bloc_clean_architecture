@@ -20,7 +20,9 @@ mixin _$HomePageState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(WeatherDto result) loaded,
+    required TResult Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)
+        loaded,
     required TResult Function(Failure failure) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,9 @@ mixin _$HomePageState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(WeatherDto result)? loaded,
+    TResult? Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)?
+        loaded,
     TResult? Function(Failure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +40,9 @@ mixin _$HomePageState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(WeatherDto result)? loaded,
+    TResult Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)?
+        loaded,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) =>
@@ -126,7 +132,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(WeatherDto result) loaded,
+    required TResult Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)
+        loaded,
     required TResult Function(Failure failure) error,
   }) {
     return initial();
@@ -137,7 +145,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(WeatherDto result)? loaded,
+    TResult? Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)?
+        loaded,
     TResult? Function(Failure failure)? error,
   }) {
     return initial?.call();
@@ -148,7 +158,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(WeatherDto result)? loaded,
+    TResult Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)?
+        loaded,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -240,7 +252,9 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(WeatherDto result) loaded,
+    required TResult Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)
+        loaded,
     required TResult Function(Failure failure) error,
   }) {
     return loading();
@@ -251,7 +265,9 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(WeatherDto result)? loaded,
+    TResult? Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)?
+        loaded,
     TResult? Function(Failure failure)? error,
   }) {
     return loading?.call();
@@ -262,7 +278,9 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(WeatherDto result)? loaded,
+    TResult Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)?
+        loaded,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -320,7 +338,10 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({WeatherDto result});
+  $Res call(
+      {WeatherDto result,
+      HomePageLoadedParams params,
+      String weatherMetricsUnit});
 
   $WeatherDtoCopyWith<$Res> get result;
 }
@@ -337,12 +358,22 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? result = null,
+    Object? params = null,
+    Object? weatherMetricsUnit = null,
   }) {
     return _then(_$LoadedImpl(
       null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as WeatherDto,
+      null == params
+          ? _value.params
+          : params // ignore: cast_nullable_to_non_nullable
+              as HomePageLoadedParams,
+      null == weatherMetricsUnit
+          ? _value.weatherMetricsUnit
+          : weatherMetricsUnit // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -358,14 +389,18 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.result);
+  const _$LoadedImpl(this.result, this.params, this.weatherMetricsUnit);
 
   @override
   final WeatherDto result;
+  @override
+  final HomePageLoadedParams params;
+  @override
+  final String weatherMetricsUnit;
 
   @override
   String toString() {
-    return 'HomePageState.loaded(result: $result)';
+    return 'HomePageState.loaded(result: $result, params: $params, weatherMetricsUnit: $weatherMetricsUnit)';
   }
 
   @override
@@ -373,11 +408,15 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.result, result) || other.result == result));
+            (identical(other.result, result) || other.result == result) &&
+            (identical(other.params, params) || other.params == params) &&
+            (identical(other.weatherMetricsUnit, weatherMetricsUnit) ||
+                other.weatherMetricsUnit == weatherMetricsUnit));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, result);
+  int get hashCode =>
+      Object.hash(runtimeType, result, params, weatherMetricsUnit);
 
   @JsonKey(ignore: true)
   @override
@@ -390,10 +429,12 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(WeatherDto result) loaded,
+    required TResult Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)
+        loaded,
     required TResult Function(Failure failure) error,
   }) {
-    return loaded(result);
+    return loaded(result, params, weatherMetricsUnit);
   }
 
   @override
@@ -401,10 +442,12 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(WeatherDto result)? loaded,
+    TResult? Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)?
+        loaded,
     TResult? Function(Failure failure)? error,
   }) {
-    return loaded?.call(result);
+    return loaded?.call(result, params, weatherMetricsUnit);
   }
 
   @override
@@ -412,12 +455,14 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(WeatherDto result)? loaded,
+    TResult Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)?
+        loaded,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(result);
+      return loaded(result, params, weatherMetricsUnit);
     }
     return orElse();
   }
@@ -461,9 +506,14 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements HomePageState {
-  const factory _Loaded(final WeatherDto result) = _$LoadedImpl;
+  const factory _Loaded(
+      final WeatherDto result,
+      final HomePageLoadedParams params,
+      final String weatherMetricsUnit) = _$LoadedImpl;
 
   WeatherDto get result;
+  HomePageLoadedParams get params;
+  String get weatherMetricsUnit;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -535,7 +585,9 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(WeatherDto result) loaded,
+    required TResult Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)
+        loaded,
     required TResult Function(Failure failure) error,
   }) {
     return error(failure);
@@ -546,7 +598,9 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(WeatherDto result)? loaded,
+    TResult? Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)?
+        loaded,
     TResult? Function(Failure failure)? error,
   }) {
     return error?.call(failure);
@@ -557,7 +611,9 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(WeatherDto result)? loaded,
+    TResult Function(WeatherDto result, HomePageLoadedParams params,
+            String weatherMetricsUnit)?
+        loaded,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {

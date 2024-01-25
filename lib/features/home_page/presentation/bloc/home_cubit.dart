@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:weather_app_flutter/core/error/failures.dart';
 import 'package:weather_app_flutter/core/util/gps_location/gps_location.dart';
@@ -19,6 +20,8 @@ class HomePageCubit extends Cubit<HomePageState> {
     required double lat,
     required double lon,
     required String units,
+    String? placeNameMain,
+    String? placeNameSecondary,
   }) async {
     final result = await _weatherUseCase.getWeatherDataByLatLon(
       lat: lat,
@@ -31,7 +34,13 @@ class HomePageCubit extends Cubit<HomePageState> {
         emit(HomePageState.error(failure));
       },
       (weather) {
-        emit(HomePageState.loaded(weather));
+        final params = HomePageLoadedParams(
+          placeNameMain: placeNameMain ?? 'Current location',
+          placeNameSecondary: placeNameSecondary,
+        );
+        emit(
+          HomePageState.loaded(weather, params, units),
+        );
       },
     );
   }
@@ -53,5 +62,36 @@ class HomePageCubit extends Cubit<HomePageState> {
     }
 
     await getWeatherForLatLong(lat: lat, lon: lon, units: 'metric');
+  }
+
+  Future<void> getWeatherForPlace(
+    String placeNameMain,
+    String? placeNameSecondary,
+    String? lat,
+    String? lng,
+  ) async {
+    emit(const HomePageState.loading());
+
+    double latFinal;
+    double lngFinal;
+
+    if (lat == null) {
+      latFinal = 24.4496225;
+    } else {
+      latFinal = double.parse(lat);
+    }
+    if (lng == null) {
+      lngFinal = 54.6028548;
+    } else {
+      lngFinal = double.parse(lng);
+    }
+
+    await getWeatherForLatLong(
+      lat: latFinal,
+      lon: lngFinal,
+      units: 'metric',
+      placeNameMain: placeNameMain,
+      placeNameSecondary: placeNameSecondary,
+    );
   }
 }

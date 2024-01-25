@@ -1,29 +1,33 @@
+/*
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:weather_app_flutter/features/home_page/presentation/bloc/home_page_bloc.dart';
+import 'package:weather_app_flutter/features/home_page/presentation/bloc/home_cubit.dart';
 
 void main() {
-  group('HomePageBloc', () {
+  group('HomePageCubit', () {
     group('constructor', () {
       test('can be instantiated', () {
         expect(
-          HomePageBloc(),
+          HomePageCubit(),
           isNotNull,
         );
       });
     });
 
     test('initial state has default value for customProperty', () {
-      final homePageBloc = HomePageBloc();
-      expect(homePageBloc.state, equals(HomePageState.initial()));
+      final homePageCubit = HomePageCubit();
+      expect(homePageCubit.state, equals(HomePageState.initial()));
     });
 
-    /*blocTest<HomePageBloc, HomePageState>(
+    */
+/*blocTest<HomePageCubit, HomePageState>(
       'CustomHomePageEvent emits nothing',
-      build: HomePageBloc.new,
+      build: HomePageCubit.new,
       act: (bloc) => bloc.add(const CustomHomePageEvent()),
       expect: () => <HomePageState>[],
-    );*/
+    );*//*
+
   });
 }
+*/

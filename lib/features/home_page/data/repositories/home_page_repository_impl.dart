@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:weather_app_flutter/core/error/exceptions.dart';
 import 'package:weather_app_flutter/core/error/failures.dart';
-import 'package:weather_app_flutter/core/network_availability_tools/network_info.dart';
-import 'package:weather_app_flutter/features/home_page/data/datasource/home_page_remote_source.dart';
+import 'package:weather_app_flutter/core/util/network_availability_tools/network_info.dart';
+import 'package:weather_app_flutter/features/home_page/data/datasource/weather_remote_source.dart';
 import 'package:weather_app_flutter/features/home_page/data/models/geocoding_dto.dart';
 import 'package:weather_app_flutter/features/home_page/data/models/weather_dto.dart';
 import 'package:weather_app_flutter/features/home_page/domain/repositories/home_page_repository.dart';

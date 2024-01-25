@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:chopper/chopper.dart';
-import 'package:weather_app_flutter/core/api/api_provider.dart';
 import 'package:weather_app_flutter/core/error/exceptions.dart';
 import 'package:weather_app_flutter/features/home_page/data/models/geocoding_dto.dart';
 import 'package:weather_app_flutter/features/home_page/data/models/weather_dto.dart';
+import 'package:weather_app_flutter/features/home_page/data/service/geo_coding_api_service.dart';
+import 'package:weather_app_flutter/features/home_page/data/service/weather_api_service.dart';
 
 abstract class WeatherRemoteSource {
   Future<WeatherDto> getWeatherData({
@@ -17,17 +18,21 @@ abstract class WeatherRemoteSource {
 }
 
 class WeatherRemoteSourceImpl implements WeatherRemoteSource {
+  WeatherRemoteSourceImpl(this._weatherApi, this._geoCodingApi);
+
+  final OpenWeatherApi _weatherApi;
+  final GeoCodingApi _geoCodingApi;
+
   @override
   Future<WeatherDto> getWeatherData({
     required double lat,
     required double lon,
     required String units,
   }) async {
-    ApiProvider.create();
-    final response = await ApiProvider.weatherApi.getWeatherData(
+    final response = await _weatherApi.getWeatherData(
       lat: 50.6189703,
       lon: 26.2496316,
-      units: 'metric',
+      units: units,
     );
 
     if (response.isSuccessful) {
@@ -52,9 +57,7 @@ class WeatherRemoteSourceImpl implements WeatherRemoteSource {
 
   @override
   Future<List<GeocodingDto>> getCityByName({required String cityName}) async {
-    ApiProvider.create();
-    final response =
-        await ApiProvider.geoCodingApi.getCityByName(cityName: cityName);
+    final response = await _geoCodingApi.getCityByName(cityName: cityName);
 
     if (response.isSuccessful) {
       if (response.body == null) {

@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app_flutter/features/home_page/presentation/bloc/home_page_bloc.dart';
+import 'package:weather_app_flutter/features/home_page/data/models/weather_dto.dart';
 
 class HomeBody extends StatelessWidget {
-  const HomeBody({super.key});
+  const HomeBody(this._data, {super.key});
+
+  final WeatherDto _data;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomePageBloc, HomePageState>(
-      builder: (context, state) {
-        return const Center(child: Text('state.customProperty'));
-      },
+    final weather = _data.current;
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text('${weather.temp.round()} °C'),
+        Text('${weather.weather[0].main}'),
+        Text('${weather.weather[0].description}'),
+        Text('${weather.windSpeed} m/s'),
+        Text('${weather.pressure} hPa'),
+        Text('${weather.humidity}%'),
+      ],
     );
   }
 }

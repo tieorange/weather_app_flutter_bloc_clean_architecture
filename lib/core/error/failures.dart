@@ -36,3 +36,18 @@ class ServerFailure implements Failure {
   @override
   bool? get stringify => true;
 }
+
+class GPSFailure implements Failure {
+  const GPSFailure({
+    this.message,
+  });
+
+  @override
+  final String? message;
+
+  @override
+  List<Object?> get props => [message];
+
+  @override
+  bool? get stringify => true;
+}

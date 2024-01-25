@@ -20,6 +20,7 @@ dependencies:
   intl: ^0.18.1
   chopper: ^7.1.0+1
   http: ^1.2.0
+  json_annotation: ^4.8.1
   mockito: ^5.4.4
   geolocator: ^10.1.0
   dartz: ^0.10.1

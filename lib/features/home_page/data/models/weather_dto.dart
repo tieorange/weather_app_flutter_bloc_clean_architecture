@@ -61,7 +61,7 @@ class Weather with _$Weather {
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'main') required WeatherType main,
     @JsonKey(name: 'description') required Description description,
-    @JsonKey(name: 'icon') required Icon icon,
+    @JsonKey(name: 'icon') required WeatherIcon icon,
   }) = _Weather;
 
   factory Weather.fromJson(Map<String, dynamic> json) =>
@@ -113,7 +113,7 @@ final descriptionValues = EnumValues({
   'mist': Description.MIST,
 });
 
-enum Icon {
+enum WeatherIcon {
   @JsonValue('01d')
   THE_01_D,
   @JsonValue('01n')
@@ -153,24 +153,24 @@ enum Icon {
 }
 
 final iconValues = EnumValues({
-  '01d': Icon.THE_01_D,
-  '01n': Icon.THE_01_N,
-  '02d': Icon.THE_02_D,
-  '02n': Icon.THE_02_N,
-  '03d': Icon.THE_03_D,
-  '03n': Icon.THE_03_N,
-  '04d': Icon.THE_04_D,
-  '04n': Icon.THE_04_N,
-  '09d': Icon.THE_09_D,
-  '09n': Icon.THE_09_N,
-  '10d': Icon.THE_10_D,
-  '10n': Icon.THE_10_N,
-  '11d': Icon.THE_11_D,
-  '11n': Icon.THE_11_N,
-  '13d': Icon.THE_13_D,
-  '13n': Icon.THE_13_N,
-  '50d': Icon.THE_50_D,
-  '50n': Icon.THE_50_N,
+  '01d': WeatherIcon.THE_01_D,
+  '01n': WeatherIcon.THE_01_N,
+  '02d': WeatherIcon.THE_02_D,
+  '02n': WeatherIcon.THE_02_N,
+  '03d': WeatherIcon.THE_03_D,
+  '03n': WeatherIcon.THE_03_N,
+  '04d': WeatherIcon.THE_04_D,
+  '04n': WeatherIcon.THE_04_N,
+  '09d': WeatherIcon.THE_09_D,
+  '09n': WeatherIcon.THE_09_N,
+  '10d': WeatherIcon.THE_10_D,
+  '10n': WeatherIcon.THE_10_N,
+  '11d': WeatherIcon.THE_11_D,
+  '11n': WeatherIcon.THE_11_N,
+  '13d': WeatherIcon.THE_13_D,
+  '13n': WeatherIcon.THE_13_N,
+  '50d': WeatherIcon.THE_50_D,
+  '50n': WeatherIcon.THE_50_N,
 });
 
 enum WeatherType {

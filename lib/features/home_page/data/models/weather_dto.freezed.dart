@@ -1077,7 +1077,7 @@ mixin _$Weather {
   @JsonKey(name: 'description')
   Description get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'icon')
-  Icon get icon => throw _privateConstructorUsedError;
+  WeatherIcon get icon => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1093,7 +1093,7 @@ abstract class $WeatherCopyWith<$Res> {
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'main') WeatherType main,
       @JsonKey(name: 'description') Description description,
-      @JsonKey(name: 'icon') Icon icon});
+      @JsonKey(name: 'icon') WeatherIcon icon});
 }
 
 /// @nodoc
@@ -1130,7 +1130,7 @@ class _$WeatherCopyWithImpl<$Res, $Val extends Weather>
       icon: null == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
-              as Icon,
+              as WeatherIcon,
     ) as $Val);
   }
 }
@@ -1146,7 +1146,7 @@ abstract class _$$WeatherImplCopyWith<$Res> implements $WeatherCopyWith<$Res> {
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'main') WeatherType main,
       @JsonKey(name: 'description') Description description,
-      @JsonKey(name: 'icon') Icon icon});
+      @JsonKey(name: 'icon') WeatherIcon icon});
 }
 
 /// @nodoc
@@ -1181,7 +1181,7 @@ class __$$WeatherImplCopyWithImpl<$Res>
       icon: null == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
-              as Icon,
+              as WeatherIcon,
     ));
   }
 }
@@ -1209,7 +1209,7 @@ class _$WeatherImpl implements _Weather {
   final Description description;
   @override
   @JsonKey(name: 'icon')
-  final Icon icon;
+  final WeatherIcon icon;
 
   @override
   String toString() {
@@ -1251,7 +1251,7 @@ abstract class _Weather implements Weather {
       {@JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'main') required final WeatherType main,
       @JsonKey(name: 'description') required final Description description,
-      @JsonKey(name: 'icon') required final Icon icon}) = _$WeatherImpl;
+      @JsonKey(name: 'icon') required final WeatherIcon icon}) = _$WeatherImpl;
 
   factory _Weather.fromJson(Map<String, dynamic> json) = _$WeatherImpl.fromJson;
 
@@ -1266,7 +1266,7 @@ abstract class _Weather implements Weather {
   Description get description;
   @override
   @JsonKey(name: 'icon')
-  Icon get icon;
+  WeatherIcon get icon;
   @override
   @JsonKey(ignore: true)
   _$$WeatherImplCopyWith<_$WeatherImpl> get copyWith =>

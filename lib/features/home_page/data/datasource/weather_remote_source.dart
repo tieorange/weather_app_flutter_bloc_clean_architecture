@@ -50,7 +50,6 @@ class WeatherRemoteSourceImpl implements WeatherRemoteSource {
     final decoded = json.decode(response.bodyString) as Map<String, dynamic>;
 
     final responseDto = WeatherDto.fromJson(decoded);
-    print(responseDto);
 
     return responseDto;
   }
@@ -74,11 +73,9 @@ class WeatherRemoteSourceImpl implements WeatherRemoteSource {
     final jsonAsList = json.decode(response.bodyString) as List;
     final responseDto = jsonAsList.map(processGeoCoding).toList();
 
-    print(responseDto);
-
     return responseDto;
   }
 
-  GeocodingDto processGeoCoding(i) =>
+  GeocodingDto processGeoCoding(dynamic i) =>
       GeocodingDto.fromJson(i as Map<String, dynamic>);
 }

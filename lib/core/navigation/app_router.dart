@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app_flutter/features/home_page/presentation/view/home_page.dart';
 import 'package:weather_app_flutter/features/introduction_page/presentation/view/introduction_page.dart';
 import 'package:weather_app_flutter/features/splash_page/presentation/view/splash_screen.dart';
+import 'package:weather_app_flutter/features/weather_details_page/presentation/view/weather_details_page.dart';
 
 enum RouteType {
   push,
@@ -14,6 +15,7 @@ enum AppRoutes {
   splashScreen('/splashScreen'),
   introductionScreen('/introduction'),
   home('/home'),
+  weatherDetailsScreen('/weatherDetails'),
   settings('/settings');
 
   const AppRoutes(this.routeName);
@@ -23,7 +25,7 @@ enum AppRoutes {
 
 abstract class AppRouter {
   static final List<AppRoutes> history = [];
-  static final initRouter = AppRoutes.splashScreen.routeName;
+  static final initRouter = AppRoutes.home.routeName;
   static final Map<String, Widget Function(BuildContext context)> routes = {
     AppRoutes.splashScreen.routeName: (context) {
       return SplashPage();
@@ -37,10 +39,17 @@ abstract class AppRouter {
     AppRoutes.home.routeName: (context) {
       return HomePage();
     },
+    AppRoutes.weatherDetailsScreen.routeName: (context) {
+      return WeatherDetailsPage();
+    },
   };
 
   static void goToHome(BuildContext context) {
     popAndPushNamed(context, AppRoutes.home);
+  }
+
+  static void goToWeatherDetails(BuildContext context) {
+    push(AppRoutes.weatherDetailsScreen, context);
   }
 
   static void goToIntroductionScreen(BuildContext context) {

@@ -11,7 +11,7 @@ class HomePageState with _$HomePageState {
     WeatherDto result,
     HomePageLoadedParams params,
     String weatherMetricsUnit,
-  ) = _Loaded;
+  ) = Loaded;
 
   const factory HomePageState.error(Failure failure) = _Error;
 }

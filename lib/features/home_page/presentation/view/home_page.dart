@@ -3,10 +3,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_places_autocomplete_text_field/google_places_autocomplete_text_field.dart';
 import 'package:google_places_autocomplete_text_field/model/prediction.dart';
 import 'package:weather_app_flutter/core/constants/app_constants.dart';
+import 'package:weather_app_flutter/core/navigation/app_router.dart';
 import 'package:weather_app_flutter/features/home_page/presentation/bloc/home_cubit.dart';
 import 'package:weather_app_flutter/features/home_page/presentation/view/home_body.dart';
 
@@ -33,15 +35,17 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         titleSpacing: 0,
       ),
-      body: const HomePageView(),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        label: Text('Forecast', style: TextStyle(color: Colors.white)),
-        icon: Icon(Icons.sunny, color: Colors.white),
-        backgroundColor: Colors.pink,
-      ),
+      body: SafeArea(child: const HomePageView()),
+      floatingActionButton: Animate(
+        child: FloatingActionButton.extended(
+          onPressed: () {
+            AppRouter.goToWeatherDetails(context);
+          },
+          label: Text('Forecast', style: TextStyle(color: Colors.white)),
+          icon: Icon(Icons.sunny, color: Colors.white),
+          backgroundColor: Colors.pink,
+        ),
+      ).animate().fade().scale().slideY(),
     );
   }
 
@@ -174,7 +178,13 @@ class _HomePageViewState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomePageCubit, HomePageState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        state.whenOrNull(
+          loaded: (result, params, weatherMetricsUnit) {
+            AppRouter.goToWeatherDetails(context);
+          },
+        );
+      },
       builder: (context, state) {
         return state.when(
           loaded: (result, params, units) {

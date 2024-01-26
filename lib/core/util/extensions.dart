@@ -8,6 +8,13 @@ extension IntDateConversion on int? {
 
     return formattedDateTime;
   }
+  String formatDate() {
+    final date = this ?? DateTime.now().millisecondsSinceEpoch;
+    final dateTime = DateTime.fromMillisecondsSinceEpoch(date * 1000);
+    final formattedDateTime = DateFormat('dd.MM').format(dateTime);
+
+    return formattedDateTime;
+  }
   String formatTime() {
     final date = this ?? DateTime.now().millisecondsSinceEpoch;
     final dateTime = DateTime.fromMillisecondsSinceEpoch(date * 1000);

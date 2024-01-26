@@ -13,7 +13,6 @@ class GetWeatherDataUseCase {
     required double lon,
     required String units,
   }) {
-    // TODO: fetch data from local if failed from remote.
 
     return _weatherRepo.getWeatherData(
       lat: lat,

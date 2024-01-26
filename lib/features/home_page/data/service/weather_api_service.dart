@@ -16,7 +16,7 @@ abstract class OpenWeatherApi extends ChopperService {
   )
   Future<Response<dynamic>> getWeatherData({
     @Path('lat') required double lat,
-    @Path('lon') required double lon,
+    @Path('lon') required double lng,
     @Path('units') required String units,
   });
 }

@@ -1,0 +1,285 @@
+{
+  "lat": 50.6192,
+  "lon": 26.2483,
+  "timezone": "Europe/Kiev",
+  "timezone_offset": 7200,
+  "current": {
+    "dt": 1706121018,
+    "sunrise": 1706076120,
+    "sunset": 1706107890,
+    "temp": 275.51,
+    "feels_like": 269.59,
+    "pressure": 1008,
+    "humidity": 98,
+    "dew_point": 275.23,
+    "uvi": 0,
+    "clouds": 100,
+    "visibility": 10000,
+    "wind_speed": 8.89,
+    "wind_deg": 255,
+    "wind_gust": 18.86,
+    "weather": [
+      {
+        "id": 500,
+        "main": "Rain",
+        "description": "light rain",
+        "icon": "10n"
+      }
+    ],
+    "rain": {
+      "1h": 0.29
+    }
+  },
+  "hourly": [
+    {
+      "dt": 1706119200,
+      "temp": 275.58,
+      "feels_like": 269.51,
+      "pressure": 1008,
+      "humidity": 98,
+      "dew_point": 275.3,
+      "uvi": 0,
+      "clouds": 100,
+      "visibility": 10000,
+      "wind_speed": 9.42,
+      "wind_deg": 253,
+      "wind_gust": 19.65,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10n"
+        }
+      ],
+      "pop": 1,
+      "rain": {
+        "1h": 0.25
+      }
+    },
+    {
+      "dt": 1706122800,
+      "temp": 275.51,
+      "feels_like": 269.59,
+      "pressure": 1008,
+      "humidity": 98,
+      "dew_point": 275.23,
+      "uvi": 0,
+      "clouds": 100,
+      "visibility": 10000,
+      "wind_speed": 8.89,
+      "wind_deg": 255,
+      "wind_gust": 18.86,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10n"
+        }
+      ],
+      "pop": 1,
+      "rain": {
+        "1h": 0.29
+      }
+    },
+    {
+      "dt": 1706126400,
+      "temp": 275.61,
+      "feels_like": 269.61,
+      "pressure": 1008,
+      "humidity": 98,
+      "dew_point": 275.33,
+      "uvi": 0,
+      "clouds": 100,
+      "wind_speed": 9.22,
+      "wind_deg": 258,
+      "wind_gust": 19.14,
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overcast clouds",
+          "icon": "04n"
+        }
+      ],
+      "pop": 0.77
+    },
+    {
+      "dt": 1706130000,
+      "temp": 275.66,
+      "feels_like": 269.83,
+      "pressure": 1008,
+      "humidity": 98,
+      "dew_point": 275.38,
+      "uvi": 0,
+      "clouds": 100,
+      "visibility": 8175,
+      "wind_speed": 8.76,
+      "wind_deg": 259,
+      "wind_gust": 17.83,
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "light rain",
+          "icon": "10n"
+        }
+      ],
+      "pop": 1,
+      "rain": {
+        "1h": 0.53
+      }
+    },
+    {
+      "dt": 1706288400,
+      "temp": 272.47,
+      "feels_like": 267.34,
+      "pressure": 1019,
+      "humidity": 94,
+      "dew_point": 271.48,
+      "uvi": 0,
+      "clouds": 100,
+      "visibility": 3202,
+      "wind_speed": 5.07,
+      "wind_deg": 306,
+      "wind_gust": 9.06,
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overcast clouds",
+          "icon": "04n"
+        }
+      ],
+      "pop": 0.53
+    }
+  ],
+  "daily": [
+    {
+      "dt": 1706090400,
+      "sunrise": 1706076120,
+      "sunset": 1706107890,
+      "moonrise": 1706101320,
+      "moonset": 1706075580,
+      "moon_phase": 0.46,
+      "summary": "Expect a day of rain with snow",
+      "temp": {
+        "day": 274.77,
+        "min": 273.57,
+        "max": 275.66,
+        "night": 275.66,
+        "eve": 274.84,
+        "morn": 273.79
+      },
+      "feels_like": {
+        "day": 269.44,
+        "night": 269.83,
+        "eve": 268.78,
+        "morn": 268.98
+      },
+      "pressure": 1017,
+      "humidity": 87,
+      "dew_point": 272.72,
+      "wind_speed": 9.42,
+      "wind_deg": 253,
+      "wind_gust": 20.02,
+      "weather": [
+        {
+          "id": 616,
+          "main": "Snow",
+          "description": "rain and snow",
+          "icon": "13d"
+        }
+      ],
+      "clouds": 100,
+      "pop": 1,
+      "rain": 1.21,
+      "snow": 4.92,
+      "uvi": 0.77
+    },
+    {
+      "dt": 1706176800,
+      "sunrise": 1706162450,
+      "sunset": 1706194390,
+      "moonrise": 1706192040,
+      "moonset": 1706164020,
+      "moon_phase": 0.5,
+      "summary": "Expect a day of rain with snow",
+      "temp": {
+        "day": 275.32,
+        "min": 273.06,
+        "max": 276.38,
+        "night": 273.25,
+        "eve": 275.21,
+        "morn": 276.38
+      },
+      "feels_like": {
+        "day": 269.45,
+        "night": 266.74,
+        "eve": 269.48,
+        "morn": 270.63
+      },
+      "pressure": 1006,
+      "humidity": 97,
+      "dew_point": 274.75,
+      "wind_speed": 9.68,
+      "wind_deg": 270,
+      "wind_gust": 18.72,
+      "weather": [
+        {
+          "id": 616,
+          "main": "Snow",
+          "description": "rain and snow",
+          "icon": "13d"
+        }
+      ],
+      "clouds": 100,
+      "pop": 1,
+      "rain": 6.36,
+      "snow": 1.81,
+      "uvi": 0.07
+    },
+    {
+      "dt": 1706263200,
+      "sunrise": 1706248778,
+      "sunset": 1706280892,
+      "moonrise": 1706282880,
+      "moonset": 1706251920,
+      "moon_phase": 0.52,
+      "summary": "Expect a day of partly cloudy with snow",
+      "temp": {
+        "day": 273.3,
+        "min": 272.2,
+        "max": 273.56,
+        "night": 272.2,
+        "eve": 272.45,
+        "morn": 272.55
+      },
+      "feels_like": {
+        "day": 267.4,
+        "night": 268.01,
+        "eve": 267.34,
+        "morn": 266.08
+      },
+      "pressure": 1017,
+      "humidity": 93,
+      "dew_point": 272.19,
+      "wind_speed": 8.79,
+      "wind_deg": 308,
+      "wind_gust": 14.84,
+      "weather": [
+        {
+          "id": 600,
+          "main": "Snow",
+          "description": "light snow",
+          "icon": "13d"
+        }
+      ],
+      "clouds": 100,
+      "pop": 1,
+      "snow": 2.13,
+      "uvi": 0.8
+    }
+  ]
+}

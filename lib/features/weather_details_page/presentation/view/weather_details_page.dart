@@ -8,6 +8,7 @@ import 'package:weather_app_flutter/core/generated/assets.gen.dart';
 import 'package:weather_app_flutter/core/util/extensions.dart';
 import 'package:weather_app_flutter/features/home_page/data/models/weather_dto.dart';
 import 'package:weather_app_flutter/features/home_page/presentation/bloc/home_cubit.dart';
+import 'package:weather_app_flutter/features/home_page/presentation/view/hourly_forecast_view.dart';
 
 class WeatherDetailsPage extends StatefulWidget {
   const WeatherDetailsPage({super.key});
@@ -28,6 +29,7 @@ class _WeatherDetailsPageState extends State<WeatherDetailsPage> {
     if (state is! Loaded) {
       return const Center(child: CircularProgressIndicator());
     }
+    final data = mapStateToData(state);
 
     return Scaffold(
       backgroundColor: Colors.teal[50],
@@ -39,23 +41,41 @@ class _WeatherDetailsPageState extends State<WeatherDetailsPage> {
       ),
       body: SafeArea(
         child: ListView.builder(
+          itemCount: data.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(
-                'buildPrintObject(state)',
-                style: TextStyle(color: Colors.white),
-              ),
-              subtitle: Text(
-                '${state.result.daily[index].dt.formatDate()}',
-              ),
-            );
+            final item = data[index];
+            return _buildListItem(item, context);
           },
         ),
       ),
     );
   }
 
-  String buildPrintObject(Loaded state) {
+  Card _buildListItem(WeatherDetailsObject item, BuildContext context) {
+    return Card(
+            elevation: 2,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: ListTile(
+                leading: Text(item.date),
+                title: Text(
+                  'Min: ${item.tempMin}°C | Max: ${item.tempMax}°C',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                subtitle: Text(
+                  '${item.feelsLike}°C - Feels like'
+                  '\n\nWind: ${item.windSpeed} m/s'
+                  '\n${item.weatherDescription}'
+                      '\n\nSunrise: ${item.sunrise} | Sunset: ${item.sunset}',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                trailing: item.icon.image(),
+              ),
+            ),
+          );
+  }
+
+  List<WeatherDetailsObject> mapStateToData(Loaded state) {
     // date, temp, feelsLike, icon, wind, weatherDescription, sunset, sunrise
     final weatherList = state.result.daily.map(
       (e) {
@@ -66,15 +86,16 @@ class _WeatherDetailsPageState extends State<WeatherDetailsPage> {
           feelsLike: e.feelsLike.day.round().toString(),
           icon: e.weather[0].icon.getImageAsset(),
           windSpeed: e.windSpeed.round().toString(),
-          weatherDescription:
-              weatherDescriptionValues[e.weather[0].description] ?? 'Cloudy',
+          weatherDescription: capitalizeFirstLetter(
+            weatherDescriptionValues[e.weather[0].description] ?? 'Cloudy',
+          ),
           sunset: e.sunset.formatTime(),
           sunrise: e.sunrise.formatTime(),
         );
         return weather;
       },
     ).toList();
-    return weatherList.toString();
+    return weatherList;
   }
 }
 

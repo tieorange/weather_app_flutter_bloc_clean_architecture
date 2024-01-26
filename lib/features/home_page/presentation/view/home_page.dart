@@ -11,7 +11,9 @@ import 'package:weather_app_flutter/features/home_page/presentation/bloc/home_cu
 import 'package:weather_app_flutter/features/home_page/presentation/view/home_body.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  HomePage({super.key}){
+   print('HomePage');
+  }
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -27,45 +29,65 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.teal[50],
       appBar: AppBar(
         title: _buildPlacesAutoComplete(),
-        leading: Container(),
+        centerTitle: false,
+        automaticallyImplyLeading: false,
+        titleSpacing: 0,
       ),
-      bottomNavigationBar: bottomNavBar(context),
       body: const HomePageView(),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          // Add your onPressed code here!
+        },
+        label: Text('Forecast', style: TextStyle(color: Colors.white)),
+        icon: Icon(Icons.sunny, color: Colors.white),
+        backgroundColor: Colors.pink,
+      ),
     );
   }
 
-  GooglePlacesAutoCompleteTextFormField _buildPlacesAutoComplete() {
-    return GooglePlacesAutoCompleteTextFormField(
-      textEditingController: controller,
-      googleAPIKey: AppConstants.googlePlacesApiKey,
-      debounceTime: 550,
-      focusNode: searchFocusNode,
-      inputDecoration: InputDecoration(
-        hintText: ' Search any place...',
-        border: InputBorder.none,
-        suffixIcon: _buildIconButton(),
+  Widget _buildPlacesAutoComplete() {
+    return Card(
+      elevation: 2,
+      child: GooglePlacesAutoCompleteTextFormField(
+        textEditingController: controller,
+        googleAPIKey: AppConstants.googlePlacesApiKey,
+        debounceTime: 550,
+        focusNode: searchFocusNode,
+        textAlignVertical: TextAlignVertical.center,
+        inputDecoration: InputDecoration(
+          hintText: ' Search any place...',
+          border: InputBorder.none,
+          isDense: true,
+          contentPadding: EdgeInsets.symmetric(horizontal: 20),
+          suffixIcon: _buildIconButton(),
+        ),
+        onTapOutside: (event) {
+          try {
+            Future.delayed(
+              const Duration(milliseconds: 300),
+              () => searchFocusNode.unfocus(),
+            );
+          } catch (e) {
+            log(e.toString());
+          }
+        },
+        onTap: controller.clear,
+        maxLines: 1,
+        overlayContainer: (child) => Material(
+          elevation: 1,
+          borderRadius: BorderRadius.circular(12),
+          child: child,
+        ),
+        getPlaceDetailWithLatLng: (prediction) =>
+            log('getPlaceDetailWithLatLng'),
+        itmClick: _onClickSearchItem,
       ),
-      onTapOutside: (event) {
-        Future.delayed(
-          const Duration(milliseconds: 200),
-          () => searchFocusNode.unfocus(),
-        );
-      },
-      onTap: controller.clear,
-      maxLines: 1,
-      overlayContainer: (child) => Material(
-        elevation: 1,
-        borderRadius: BorderRadius.circular(12),
-        child: child,
-      ),
-      getPlaceDetailWithLatLng: (prediction) => log('getPlaceDetailWithLatLng'),
-      itmClick: _onClickSearchItem,
     );
   }
 
   SizedBox bottomNavBar(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: 50,
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.only(left: 8, right: 8, bottom: 10),
@@ -73,7 +95,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {},
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(
-              Theme.of(context).colorScheme.secondary,
+              Color.fromRGBO(93, 25, 72, 1).withOpacity(0.7),
             ),
             padding: MaterialStateProperty.all(
               EdgeInsets.symmetric(vertical: 10),
@@ -84,7 +106,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: const Text(
             'Show forecast',
-            style: TextStyle(fontSize: 25, color: Colors.white),
+            style: TextStyle(fontSize: 20, color: Colors.white),
           ),
         ),
       ),
@@ -130,6 +152,7 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     super.dispose();
     controller.dispose();
+    searchFocusNode.dispose();
   }
 }
 

@@ -26,6 +26,7 @@ class _HomeBodyState extends State<HomeBody> {
         child: Column(
           children: [
             const SizedBox(height: 20),
+            // City:
             Text(
               widget._params.placeNameMain,
               style: Theme.of(context).textTheme.displaySmall,
@@ -35,24 +36,29 @@ class _HomeBodyState extends State<HomeBody> {
                   width: 100,
                   height: 100,
                 ),
+
+            // Temperature:
             Text(
               '${weather.temp.round()} °C',
               style: Theme.of(context).textTheme.displaySmall,
             ),
             const SizedBox(height: 20),
-            HourlyForecastView(data: widget._data),
-            Text('Hourly: ${buildHourly(hourly)} °C'),
+
+            // Today:
             Text('Feels like: ${weather.feelsLike.round()} °C'),
             Text('Weather: ${mainWeatherValues[weather.weather[0].main]}'),
             Text('Description: '
                 '${weatherDescriptionValues[weather.weather[0].description]}'),
-            Text('Icon: ${weather.weather[0].icon}'),
             Text('Wind speed: ${weather.windSpeed} m/s'),
             Text('Pressure: ${weather.pressure} hPa'),
             Text('Humidity: ${weather.humidity}%'),
             Text('Sunrise: ${weather.sunrise.formatTime()}'),
             Text('Sunset: ${weather.sunset.formatTime()}'),
-            SizedBox(height: 50),
+            const SizedBox(height: 20),
+
+            // Hourly:
+            HourlyForecastView(data: widget._data),
+            SizedBox(height: 76),
           ],
         ),
       ),

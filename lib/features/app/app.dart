@@ -27,7 +27,6 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: AppRouter.initRouter,
         routes: AppRouter.routes,
-        home: const HomePage(),
       ),
     );
   }

@@ -100,22 +100,6 @@ enum Description {
   MIST,
 }
 
-final _weatherDescriptionValues = EnumValues({
-  'clear sky': Description.CLEAR_SKY,
-  'light rain': Description.LIGHT_RAIN,
-  'light snow': Description.LIGHT_SNOW,
-  'overcast clouds': Description.OVERCAST_CLOUDS,
-  'rain and snow': Description.RAIN_AND_SNOW,
-  'snow': Description.SNOW,
-  'broken clouds': Description.BROKEN_CLOUDS,
-  'few clouds': Description.FEW_CLOUDS,
-  'scattered clouds': Description.SCATTERED_CLOUDS,
-  'shower rain': Description.SHOWER_RAIN,
-  'rain': Description.RAIN,
-  'thunderstorm': Description.THUNDERSTORM,
-  'mist': Description.MIST,
-});
-
 final weatherDescriptionValues = {
   Description.CLEAR_SKY: 'clear sky',
   Description.LIGHT_RAIN: 'light rain',

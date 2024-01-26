@@ -117,7 +117,7 @@ class _WeatherDetailsPageState extends State<WeatherDetailsPage> {
             ),
           ),
         ),
-      ).animate().fade(delay: 100.ms).then().slideX().then().shimmer(),
+      ).animate().fade(delay: 20.ms).then().slideX().then().shimmer(),
     );
   }
 

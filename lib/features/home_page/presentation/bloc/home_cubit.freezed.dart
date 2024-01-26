@@ -52,7 +52,7 @@ mixin _$HomePageState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(HomePageError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,7 +60,7 @@ mixin _$HomePageState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(HomePageError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,7 +68,7 @@ mixin _$HomePageState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(HomePageError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -176,7 +176,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(HomePageError value) error,
   }) {
     return initial(this);
   }
@@ -187,7 +187,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(HomePageError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -198,7 +198,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(HomePageError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -296,7 +296,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(HomePageError value) error,
   }) {
     return loading(this);
   }
@@ -307,7 +307,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(HomePageError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -318,7 +318,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(HomePageError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -473,7 +473,7 @@ class _$LoadedImpl implements Loaded {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(HomePageError value) error,
   }) {
     return loaded(this);
   }
@@ -484,7 +484,7 @@ class _$LoadedImpl implements Loaded {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(HomePageError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -495,7 +495,7 @@ class _$LoadedImpl implements Loaded {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(HomePageError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -520,20 +520,20 @@ abstract class Loaded implements HomePageState {
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+abstract class _$$HomePageErrorImplCopyWith<$Res> {
+  factory _$$HomePageErrorImplCopyWith(
+          _$HomePageErrorImpl value, $Res Function(_$HomePageErrorImpl) then) =
+      __$$HomePageErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$HomePageStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$HomePageErrorImplCopyWithImpl<$Res>
+    extends _$HomePageStateCopyWithImpl<$Res, _$HomePageErrorImpl>
+    implements _$$HomePageErrorImplCopyWith<$Res> {
+  __$$HomePageErrorImplCopyWithImpl(
+      _$HomePageErrorImpl _value, $Res Function(_$HomePageErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -541,7 +541,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$ErrorImpl(
+    return _then(_$HomePageErrorImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -552,8 +552,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(this.failure);
+class _$HomePageErrorImpl implements HomePageError {
+  const _$HomePageErrorImpl(this.failure);
 
   @override
   final Failure failure;
@@ -567,7 +567,7 @@ class _$ErrorImpl implements _Error {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
+            other is _$HomePageErrorImpl &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -577,8 +577,8 @@ class _$ErrorImpl implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  _$$HomePageErrorImplCopyWith<_$HomePageErrorImpl> get copyWith =>
+      __$$HomePageErrorImplCopyWithImpl<_$HomePageErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -629,7 +629,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(Loaded value) loaded,
-    required TResult Function(_Error value) error,
+    required TResult Function(HomePageError value) error,
   }) {
     return error(this);
   }
@@ -640,7 +640,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(Loaded value)? loaded,
-    TResult? Function(_Error value)? error,
+    TResult? Function(HomePageError value)? error,
   }) {
     return error?.call(this);
   }
@@ -651,7 +651,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(Loaded value)? loaded,
-    TResult Function(_Error value)? error,
+    TResult Function(HomePageError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -661,11 +661,11 @@ class _$ErrorImpl implements _Error {
   }
 }
 
-abstract class _Error implements HomePageState {
-  const factory _Error(final Failure failure) = _$ErrorImpl;
+abstract class HomePageError implements HomePageState {
+  const factory HomePageError(final Failure failure) = _$HomePageErrorImpl;
 
   Failure get failure;
   @JsonKey(ignore: true)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+  _$$HomePageErrorImplCopyWith<_$HomePageErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

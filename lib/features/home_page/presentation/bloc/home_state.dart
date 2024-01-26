@@ -13,7 +13,7 @@ class HomePageState with _$HomePageState {
     String weatherMetricsUnit,
   ) = Loaded;
 
-  const factory HomePageState.error(Failure failure) = _Error;
+  const factory HomePageState.error(Failure failure) = HomePageError;
 }
 
 class HomePageLoadedParams implements Equatable {

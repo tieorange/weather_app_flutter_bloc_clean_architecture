@@ -55,7 +55,7 @@ class _WeatherDetailsPageState extends State<WeatherDetailsPage> {
       child: Padding(
         padding: const EdgeInsets.all(2),
         child: Card(
-          color: Colors.teal[50],
+          color: Colors.teal[100],
           elevation: 2,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 4),

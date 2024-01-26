@@ -68,23 +68,3 @@ class WeatherRepositoryImpl implements WeatherRepository {
     }
   }
 }
-
-/*
-  Future<Either<Failure, T>> _doRequest<T>(FutureOr<T> computation()) async {
-    final hasConnection = await _networkInfo.isConnected;
-    if (!hasConnection) {
-      return Left(NetworkFailure());
-    }
-
-    try {
-      T result = await computation();
-      return Right(result);
-    } on ServerException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on AuthenticationException catch (e) {
-      return Left(AuthenticationFailure(e.message));
-    } on DirectedCondensingException catch (e) {
-      return Left(DirectedCondensingFailure(e.message));
-    }
-  }
-  */

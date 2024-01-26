@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:weather_app_flutter/core/util/date_time_converter.dart';
+import 'package:weather_app_flutter/core/util/extensions.dart';
 import 'package:weather_app_flutter/features/home_page/data/models/weather_dto.dart';
 import 'package:weather_app_flutter/features/home_page/presentation/bloc/home_cubit.dart';
 
@@ -24,13 +24,25 @@ class _HomeBodyState extends State<HomeBody> {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            Text(widget._params.placeNameMain),
-            Text('${widget._params.placeNameSecondary}'),
+            Text(
+              widget._params.placeNameMain,
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            Text(widget._params.placeNameSecondary ?? ''),
+            weather.weather[0].icon.getImageAsset().image(
+                  width: 100,
+                  height: 100,
+                ),
+            Text(
+              '${weather.temp.round()} °C',
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
             const SizedBox(height: 20),
-            Text('Temperature: ${weather.temp.round()} °C'),
             Text('Feels like: ${weather.feelsLike.round()} °C'),
-            Text('Weather: ${weather.weather[0].main}'),
-            Text('Description: ${weather.weather[0].description}'),
+            Text('Weather: ${mainWeatherValues[weather.weather[0].main]}'),
+            Text('Description: '
+                '${weatherDescriptionValues[weather.weather[0].description]}'),
+            Text('Icon: ${weather.weather[0].icon}'),
             Text('Wind speed: ${weather.windSpeed} m/s'),
             Text('Pressure: ${weather.pressure} hPa'),
             Text('Humidity: ${weather.humidity}%'),

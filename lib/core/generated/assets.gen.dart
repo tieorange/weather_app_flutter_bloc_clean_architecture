@@ -38,8 +38,82 @@ class $AssetsImagesGen {
   AssetGenImage get imageTest =>
       const AssetGenImage('assets/images/image_test.png');
 
+  /// File path: assets/images/q01d.png
+  AssetGenImage get q01d => const AssetGenImage('assets/images/q01d.png');
+
+  /// File path: assets/images/q01n.png
+  AssetGenImage get q01n => const AssetGenImage('assets/images/q01n.png');
+
+  /// File path: assets/images/q02d.png
+  AssetGenImage get q02d => const AssetGenImage('assets/images/q02d.png');
+
+  /// File path: assets/images/q02n.png
+  AssetGenImage get q02n => const AssetGenImage('assets/images/q02n.png');
+
+  /// File path: assets/images/q03d.png
+  AssetGenImage get q03d => const AssetGenImage('assets/images/q03d.png');
+
+  /// File path: assets/images/q03n.png
+  AssetGenImage get q03n => const AssetGenImage('assets/images/q03n.png');
+
+  /// File path: assets/images/q04d.png
+  AssetGenImage get q04d => const AssetGenImage('assets/images/q04d.png');
+
+  /// File path: assets/images/q04n.png
+  AssetGenImage get q04n => const AssetGenImage('assets/images/q04n.png');
+
+  /// File path: assets/images/q09d.png
+  AssetGenImage get q09d => const AssetGenImage('assets/images/q09d.png');
+
+  /// File path: assets/images/q09n.png
+  AssetGenImage get q09n => const AssetGenImage('assets/images/q09n.png');
+
+  /// File path: assets/images/q10d.png
+  AssetGenImage get q10d => const AssetGenImage('assets/images/q10d.png');
+
+  /// File path: assets/images/q10n.png
+  AssetGenImage get q10n => const AssetGenImage('assets/images/q10n.png');
+
+  /// File path: assets/images/q11d.png
+  AssetGenImage get q11d => const AssetGenImage('assets/images/q11d.png');
+
+  /// File path: assets/images/q11n.png
+  AssetGenImage get q11n => const AssetGenImage('assets/images/q11n.png');
+
+  /// File path: assets/images/q13d.png
+  AssetGenImage get q13d => const AssetGenImage('assets/images/q13d.png');
+
+  /// File path: assets/images/q13n.png
+  AssetGenImage get q13n => const AssetGenImage('assets/images/q13n.png');
+
+  /// File path: assets/images/q50d.png
+  AssetGenImage get q50d => const AssetGenImage('assets/images/q50d.png');
+
+  /// File path: assets/images/q50n.png
+  AssetGenImage get q50n => const AssetGenImage('assets/images/q50n.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [imageTest];
+  List<AssetGenImage> get values => [
+        imageTest,
+        q01d,
+        q01n,
+        q02d,
+        q02n,
+        q03d,
+        q03n,
+        q04d,
+        q04n,
+        q09d,
+        q09n,
+        q10d,
+        q10n,
+        q11d,
+        q11n,
+        q13d,
+        q13n,
+        q50d,
+        q50n
+      ];
 }
 
 class Assets {

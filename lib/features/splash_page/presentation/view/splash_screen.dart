@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:rive/rive.dart';
 import 'package:weather_app_flutter/core/generated/assets.gen.dart';
 import 'package:weather_app_flutter/core/navigation/app_router.dart';
 
@@ -14,11 +13,12 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  int delaySeconds = 5;
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: delaySeconds), () {
       AppRouter.goToIntroductionScreen(context);
     });
   }
@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage> {
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: _buildAnimations(height, width) /*buildRiveAnimation()*/,
+      body: _buildAnimations(height, width),
     );
   }
 
@@ -48,13 +48,6 @@ class _SplashPageState extends State<SplashPage> {
           style: TextStyle(color: Colors.white70, fontSize: 30),
         ),
       ],
-    );
-  }
-
-  RiveAnimation buildRiveAnimation() {
-    return RiveAnimation.asset(
-      Assets.animations.balloonist,
-      // 'https://cdn.rive.app/animations/vehicles.riv',
     );
   }
 }

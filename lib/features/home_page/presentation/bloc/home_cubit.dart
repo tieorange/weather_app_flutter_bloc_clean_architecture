@@ -35,7 +35,7 @@ class HomePageCubit extends Cubit<HomePageState> {
       },
       (weather) {
         final params = HomePageLoadedParams(
-          placeNameMain: placeNameMain ?? 'Current location',
+          placeNameMain: placeNameMain ?? 'Your location',
           placeNameSecondary: placeNameSecondary,
         );
         emit(

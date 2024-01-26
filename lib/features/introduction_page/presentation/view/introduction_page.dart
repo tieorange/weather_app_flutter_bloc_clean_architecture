@@ -20,11 +20,6 @@ class _IntroductionPageState extends State<IntroductionPage> {
   * - Get weather in Your location
   * */
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   void onPressDone() {
     AppRouter.goToHome(context);
   }

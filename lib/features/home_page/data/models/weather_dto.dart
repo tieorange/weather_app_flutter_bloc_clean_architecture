@@ -1,4 +1,7 @@
+// ignore_for_file: constant_identifier_names, invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:weather_app_flutter/core/generated/assets.gen.dart';
 
 part 'weather_dto.freezed.dart';
 part 'weather_dto.g.dart';
@@ -97,7 +100,7 @@ enum Description {
   MIST,
 }
 
-final descriptionValues = EnumValues({
+final _weatherDescriptionValues = EnumValues({
   'clear sky': Description.CLEAR_SKY,
   'light rain': Description.LIGHT_RAIN,
   'light snow': Description.LIGHT_SNOW,
@@ -113,9 +116,25 @@ final descriptionValues = EnumValues({
   'mist': Description.MIST,
 });
 
+final weatherDescriptionValues = {
+  Description.CLEAR_SKY: 'clear sky',
+  Description.LIGHT_RAIN: 'light rain',
+  Description.LIGHT_SNOW: 'light snow',
+  Description.OVERCAST_CLOUDS: 'overcast clouds',
+  Description.RAIN_AND_SNOW: 'rain and snow',
+  Description.SNOW: 'snow',
+  Description.BROKEN_CLOUDS: 'broken clouds',
+  Description.FEW_CLOUDS: 'few clouds',
+  Description.SCATTERED_CLOUDS: 'scattered clouds',
+  Description.SHOWER_RAIN: 'shower rain',
+  Description.RAIN: 'rain',
+  Description.THUNDERSTORM: 'thunderstorm',
+  Description.MIST: 'mist',
+};
+
 enum WeatherIcon {
   @JsonValue('01d')
-  THE_01_D,
+  THE_01_D(),
   @JsonValue('01n')
   THE_01_N,
   @JsonValue('02d')
@@ -152,6 +171,49 @@ enum WeatherIcon {
   THE_50_N
 }
 
+extension IntDateConversion on WeatherIcon {
+  AssetGenImage getImageAsset() {
+    switch (this) {
+      case WeatherIcon.THE_01_D:
+        return Assets.images.q01d;
+      case WeatherIcon.THE_01_N:
+        return Assets.images.q01n;
+      case WeatherIcon.THE_02_D:
+        return Assets.images.q02d;
+      case WeatherIcon.THE_02_N:
+        return Assets.images.q02n;
+      case WeatherIcon.THE_03_D:
+        return Assets.images.q03d;
+      case WeatherIcon.THE_03_N:
+        return Assets.images.q03n;
+      case WeatherIcon.THE_04_D:
+        return Assets.images.q04d;
+      case WeatherIcon.THE_04_N:
+        return Assets.images.q04n;
+      case WeatherIcon.THE_09_D:
+        return Assets.images.q09d;
+      case WeatherIcon.THE_09_N:
+        return Assets.images.q09n;
+      case WeatherIcon.THE_10_D:
+        return Assets.images.q10d;
+      case WeatherIcon.THE_10_N:
+        return Assets.images.q10n;
+      case WeatherIcon.THE_11_D:
+        return Assets.images.q11d;
+      case WeatherIcon.THE_11_N:
+        return Assets.images.q11n;
+      case WeatherIcon.THE_13_D:
+        return Assets.images.q13d;
+      case WeatherIcon.THE_13_N:
+        return Assets.images.q13n;
+      case WeatherIcon.THE_50_D:
+        return Assets.images.q50d;
+      case WeatherIcon.THE_50_N:
+        return Assets.images.q50n;
+    }
+  }
+}
+
 final iconValues = EnumValues({
   '01d': WeatherIcon.THE_01_D,
   '01n': WeatherIcon.THE_01_N,
@@ -184,12 +246,12 @@ enum WeatherType {
   SNOW
 }
 
-final mainValues = EnumValues({
-  'Clear': WeatherType.CLEAR,
-  'Clouds': WeatherType.CLOUDS,
-  'Rain': WeatherType.RAIN,
-  'Snow': WeatherType.SNOW
-});
+final mainWeatherValues = {
+  WeatherType.CLEAR: 'Clear',
+  WeatherType.CLOUDS: 'Clouds',
+  WeatherType.RAIN: 'Rain',
+  WeatherType.SNOW: 'Snow',
+};
 
 @freezed
 class Daily with _$Daily {

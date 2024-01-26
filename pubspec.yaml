@@ -30,6 +30,7 @@ dependencies:
   rive: ^0.12.4
   lottie: ^3.0.0
   introduction_screen: ^3.1.12
+  fl_chart: ^0.66.1
 
 dev_dependencies:
   bloc_test: ^9.1.5

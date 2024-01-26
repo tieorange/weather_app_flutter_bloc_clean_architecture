@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_breaks
 
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:weather_app_flutter/features/home_page/presentation/view/home_page.dart';
 import 'package:weather_app_flutter/features/introduction_page/presentation/view/introduction_page.dart';
@@ -34,7 +32,7 @@ abstract class AppRouter {
       return IntroductionPage();
     },
     AppRoutes.settings.routeName: (context) {
-      return const HomePage();
+      return const SplashPage();
     },
     AppRoutes.home.routeName: (context) {
       return HomePage();
@@ -86,48 +84,11 @@ abstract class AppRouter {
     );
   }
 
-  static Future<void> popUntilAndPushNamed(
-    BuildContext context, {
-    required AppRoutes popUntilRouteName,
-    required AppRoutes pushRouteName,
-    Function? callback,
-    bool rootNavigator = false,
-  }) async {
-    log('NAVIGATION: Popping until ${popUntilRouteName.routeName} and pushing ${pushRouteName.routeName}');
-    callback?.call();
-    await Navigator.of(context, rootNavigator: rootNavigator)
-        .pushNamedAndRemoveUntil(
-      pushRouteName.routeName,
-      (route) => route.settings.name == popUntilRouteName.routeName,
-    );
-  }
-
   static void popUntil(BuildContext context, AppRoutes route) {
     Navigator.of(
       context,
       rootNavigator: true,
     ).popUntil(ModalRoute.withName(route.routeName));
   }
-
-  //endregion
-
-  //region private methods
-  static void _navigate({
-    required BuildContext context,
-    required AppRoutes route,
-    RouteType type = RouteType.push,
-    Object? arguments,
-  }) {
-    final name = route.routeName;
-    log('NAVIGATION: Navigating to $name');
-    history.add(route);
-    switch (type) {
-      case RouteType.push:
-        Navigator.pushNamed(context, name, arguments: arguments);
-        break;
-      case RouteType.pop:
-        Navigator.popUntil(context, ModalRoute.withName(name));
-        break;
-    }
-  }
+//endregion
 }

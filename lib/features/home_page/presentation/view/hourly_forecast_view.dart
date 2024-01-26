@@ -19,7 +19,7 @@ class HourlyForecastView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             'Hourly forecast',
             style: Theme.of(context).textTheme.titleLarge,

@@ -36,9 +36,7 @@ class _WeatherDetailsPageState extends State<WeatherDetailsPage> {
     return Scaffold(
       backgroundColor: Colors.teal[50],
       appBar: AppBar(
-        title: Text(
-          state.params.placeNameMain,
-        ),
+        title: Text(state.params.placeNameMain),
       ),
       body: SafeArea(
         child: ListView.builder(

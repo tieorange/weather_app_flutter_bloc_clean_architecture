@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.teal[50],
       appBar: AppBar(
         title: _buildPlacesAutoComplete(),
         leading: Container(),
@@ -64,9 +65,10 @@ class _HomePageState extends State<HomePage> {
 
   SizedBox bottomNavBar(BuildContext context) {
     return SizedBox(
+      height: 60,
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+        padding: const EdgeInsets.only(left: 8, right: 8, bottom: 10),
         child: ElevatedButton(
           onPressed: () {},
           style: ButtonStyle(

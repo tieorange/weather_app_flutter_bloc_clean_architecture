@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app_flutter/core/util/extensions.dart';
 import 'package:weather_app_flutter/features/home_page/data/models/weather_dto.dart';
 import 'package:weather_app_flutter/features/home_page/presentation/bloc/home_cubit.dart';
+import 'package:weather_app_flutter/features/home_page/presentation/view/hourly_forecast_view.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody(this._data, this._params, {super.key});
@@ -39,6 +40,7 @@ class _HomeBodyState extends State<HomeBody> {
               style: Theme.of(context).textTheme.displaySmall,
             ),
             const SizedBox(height: 20),
+            HourlyForecastView(data: widget._data),
             Text('Hourly: ${buildHourly(hourly)} °C'),
             Text('Feels like: ${weather.feelsLike.round()} °C'),
             Text('Weather: ${mainWeatherValues[weather.weather[0].main]}'),

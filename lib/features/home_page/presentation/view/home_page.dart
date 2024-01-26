@@ -178,13 +178,7 @@ class _HomePageViewState extends State<HomePageView> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomePageCubit, HomePageState>(
-      listener: (context, state) {
-        state.whenOrNull(
-          loaded: (result, params, weatherMetricsUnit) {
-            AppRouter.goToWeatherDetails(context);
-          },
-        );
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return state.when(
           loaded: (result, params, units) {

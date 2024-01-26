@@ -65,7 +65,7 @@ class _HomeBodyState extends State<HomeBody> {
               // Hourly:
               HourlyForecastView(data: widget._data).animate().fade(
                     delay: 600.ms,
-                  ).slideX(),
+                  ).slideX().then().shimmer(),
               SizedBox(height: 76),
             ],
           ),

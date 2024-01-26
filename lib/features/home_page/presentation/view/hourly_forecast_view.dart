@@ -14,14 +14,14 @@ class HourlyForecastView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hourly = data.hourly;
+    final hourly = data.hourly.take(25).toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            'Hourly forecast',
+            '24H Forecast',
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
@@ -51,6 +51,7 @@ class HourlyForecastView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Card(
+        color: Colors.teal[50],
         elevation: 2,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 4),

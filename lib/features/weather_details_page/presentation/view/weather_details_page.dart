@@ -1,9 +1,11 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:weather_app_flutter/core/generated/assets.gen.dart';
 import 'package:weather_app_flutter/core/util/extensions.dart';
 import 'package:weather_app_flutter/features/home_page/data/models/weather_dto.dart';
@@ -36,7 +38,6 @@ class _WeatherDetailsPageState extends State<WeatherDetailsPage> {
       appBar: AppBar(
         title: Text(
           state.params.placeNameMain,
-          style: TextStyle(color: Colors.white),
         ),
       ),
       body: SafeArea(
@@ -51,28 +52,77 @@ class _WeatherDetailsPageState extends State<WeatherDetailsPage> {
     );
   }
 
-  Card _buildListItem(WeatherDetailsObject item, BuildContext context) {
-    return Card(
-            elevation: 2,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: ListTile(
-                leading: Text(item.date),
-                title: Text(
-                  'Min: ${item.tempMin}°C | Max: ${item.tempMax}°C',
-                  style: Theme.of(context).textTheme.titleMedium,
+  Widget _buildListItem(WeatherDetailsObject item, BuildContext context) {
+    return Animate(
+      child: Padding(
+        padding: const EdgeInsets.all(2),
+        child: Card(
+          color: Colors.teal[50],
+          elevation: 2,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: ListTile(
+              title: Text.rich(
+                TextSpan(
+                  children: [
+                    WidgetSpan(
+                      child: FaIcon(FontAwesomeIcons.calendarDay),
+                    ),
+                    TextSpan(
+                      text: ' ${item.date} \n\n',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    WidgetSpan(
+                      child: FaIcon(FontAwesomeIcons.temperatureHalf),
+                    ),
+                    TextSpan(
+                      text: ' Min: ${item.tempMin}°C Max: ${item.tempMax}°C',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ],
                 ),
-                subtitle: Text(
-                  '${item.feelsLike}°C - Feels like'
-                  '\n\nWind: ${item.windSpeed} m/s'
-                  '\n${item.weatherDescription}'
-                      '\n\nSunrise: ${item.sunrise} | Sunset: ${item.sunset}',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-                trailing: item.icon.image(),
               ),
+              subtitle: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '${item.feelsLike}°C - Feels like\n\n',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    WidgetSpan(
+                      child: FaIcon(FontAwesomeIcons.wind),
+                    ),
+                    TextSpan(
+                      text: ' Wind: ${item.windSpeed} m/s'
+                          '\n${item.weatherDescription} \n\n',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: FaIcon(FontAwesomeIcons.sun),
+                    ),
+                    TextSpan(
+                      text: '  Sunrise: ${item.sunrise}\n',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    TextSpan(text: '\n'),
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: FaIcon(FontAwesomeIcons.moon),
+                    ),
+                    TextSpan(
+                      text: '   Sunset: ${item.sunset}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ],
+                ),
+              ),
+              trailing: item.icon.image(),
             ),
-          );
+          ),
+        ),
+      ).animate().fade(delay: 100.ms).then().slideX().then().shimmer(),
+    );
   }
 
   List<WeatherDetailsObject> mapStateToData(Loaded state) {

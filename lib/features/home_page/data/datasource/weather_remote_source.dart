@@ -58,7 +58,6 @@ class WeatherRemoteSourceImpl implements WeatherRemoteSource {
       log(e.toString());
       rethrow;
     }
-    return null;
   }
 
   @override

@@ -4,7 +4,6 @@ import 'package:weather_app_flutter/core/l10n/l10n.dart';
 import 'package:weather_app_flutter/core/navigation/app_router.dart';
 import 'package:weather_app_flutter/core/util/dependency_injection/dependency_injection.dart';
 import 'package:weather_app_flutter/features/home_page/presentation/bloc/home_cubit.dart';
-import 'package:weather_app_flutter/features/home_page/presentation/view/home_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

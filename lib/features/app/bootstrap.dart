@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:weather_app_flutter/core/util/dependency_injection/dependency_injection.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -30,6 +31,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   Bloc.observer = const AppBlocObserver();
 
   await DependencyInjector.init();
+  Animate.restartOnHotReload = true;
 
   // Add cross-flavor configuration here
 

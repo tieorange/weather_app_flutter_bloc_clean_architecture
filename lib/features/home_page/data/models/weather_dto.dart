@@ -1,4 +1,7 @@
+// ignore_for_file: constant_identifier_names, invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:weather_app_flutter/core/generated/assets.gen.dart';
 
 part 'weather_dto.freezed.dart';
 part 'weather_dto.g.dart';
@@ -34,8 +37,6 @@ class CurrentWeather with _$CurrentWeather {
     @JsonKey(name: 'clouds') required int clouds,
     @JsonKey(name: 'visibility') int? visibility,
     @JsonKey(name: 'wind_speed') required double windSpeed,
-    @JsonKey(name: 'wind_deg') required int windDeg,
-    @JsonKey(name: 'wind_gust') required double windGust,
     @JsonKey(name: 'weather') required List<Weather> weather,
     @JsonKey(name: 'pop') double? pop,
     @JsonKey(name: 'snow') Rain? snow,
@@ -61,7 +62,7 @@ class Weather with _$Weather {
     @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'main') required WeatherType main,
     @JsonKey(name: 'description') required Description description,
-    @JsonKey(name: 'icon') required Icon icon,
+    @JsonKey(name: 'icon') required WeatherIcon icon,
   }) = _Weather;
 
   factory Weather.fromJson(Map<String, dynamic> json) =>
@@ -95,27 +96,72 @@ enum Description {
   THUNDERSTORM,
   @JsonValue('mist')
   MIST,
+  @JsonValue('moderate rain')
+  MODERATE_RAIN,
+  @JsonValue('heavy intensity rain')
+  HEAVY_INTENSITY_RAIN,
+  @JsonValue('heavy rain')
+  HEAVY_RAIN,
+  @JsonValue('light intensity drizzle')
+  LIGHT_INTENSITY_DRIZZLE,
+  @JsonValue('light drizzle')
+  LIGHT_DRIZZLE,
+  @JsonValue('moderate drizzle')
+  MODERATE_DRIZZLE,
+  @JsonValue('heavy intensity drizzle')
+  HEAVY_INTENSITY_DRIZZLE,
+  @JsonValue('heavy drizzle')
+  HEAVY_DRIZZLE,
+  @JsonValue('shower rain and drizzle')
+  SHOWER_RAIN_AND_DRIZZLE,
+  @JsonValue('shower drizzle')
+  SHOWER_DRIZZLE,
+  @JsonValue('heavy intensity shower rain')
+  HEAVY_INTENSITY_SHOWER_RAIN,
+  @JsonValue('heavy shower rain')
+  HEAVY_SHOWER_RAIN,
+  @JsonValue('ragged shower rain')
+  RAGGED_SHOWER_RAIN,
+  @JsonValue('shower snow')
+  SHOWER_SNOW,
+  @JsonValue('rain snow')
+  RAIN_SNOW,
 }
 
-final descriptionValues = EnumValues({
-  'clear sky': Description.CLEAR_SKY,
-  'light rain': Description.LIGHT_RAIN,
-  'light snow': Description.LIGHT_SNOW,
-  'overcast clouds': Description.OVERCAST_CLOUDS,
-  'rain and snow': Description.RAIN_AND_SNOW,
-  'snow': Description.SNOW,
-  'broken clouds': Description.BROKEN_CLOUDS,
-  'few clouds': Description.FEW_CLOUDS,
-  'scattered clouds': Description.SCATTERED_CLOUDS,
-  'shower rain': Description.SHOWER_RAIN,
-  'rain': Description.RAIN,
-  'thunderstorm': Description.THUNDERSTORM,
-  'mist': Description.MIST,
-});
+final weatherDescriptionValues = {
+  Description.CLEAR_SKY: 'clear sky',
+  Description.LIGHT_RAIN: 'light rain',
+  Description.LIGHT_SNOW: 'light snow',
+  Description.OVERCAST_CLOUDS: 'overcast clouds',
+  Description.RAIN_AND_SNOW: 'rain and snow',
+  Description.SNOW: 'snow',
+  Description.BROKEN_CLOUDS: 'broken clouds',
+  Description.FEW_CLOUDS: 'few clouds',
+  Description.SCATTERED_CLOUDS: 'scattered clouds',
+  Description.SHOWER_RAIN: 'shower rain',
+  Description.RAIN: 'rain',
+  Description.THUNDERSTORM: 'thunderstorm',
+  Description.MIST: 'mist',
+  Description.MODERATE_RAIN: 'moderate rain',
+  Description.HEAVY_INTENSITY_RAIN: 'heavy intensity rain',
+  Description.HEAVY_RAIN: 'heavy rain',
+  Description.LIGHT_INTENSITY_DRIZZLE: 'light intensity drizzle',
+  Description.LIGHT_DRIZZLE: 'light drizzle',
+  Description.MODERATE_DRIZZLE: 'moderate drizzle',
+  Description.HEAVY_INTENSITY_DRIZZLE: 'heavy intensity drizzle',
+  Description.HEAVY_DRIZZLE: 'heavy drizzle',
+  Description.SHOWER_RAIN_AND_DRIZZLE: 'shower rain and drizzle',
+  Description.SHOWER_DRIZZLE: 'shower drizzle',
+  Description.HEAVY_INTENSITY_SHOWER_RAIN: 'heavy intensity shower rain',
+  Description.HEAVY_SHOWER_RAIN: 'heavy shower rain',
+  Description.RAGGED_SHOWER_RAIN: 'ragged shower rain',
+  Description.SHOWER_SNOW: 'shower snow',
+  Description.RAIN_SNOW: 'rain snow',
+};
 
-enum Icon {
+enum WeatherIcon {
   @JsonValue('01d')
-  THE_01_D,
+  THE_01_D(),
   @JsonValue('01n')
   THE_01_N,
   @JsonValue('02d')
@@ -152,25 +198,68 @@ enum Icon {
   THE_50_N
 }
 
+extension IntDateConversion on WeatherIcon {
+  AssetGenImage getImageAsset() {
+    switch (this) {
+      case WeatherIcon.THE_01_D:
+        return Assets.images.q01d;
+      case WeatherIcon.THE_01_N:
+        return Assets.images.q01n;
+      case WeatherIcon.THE_02_D:
+        return Assets.images.q02d;
+      case WeatherIcon.THE_02_N:
+        return Assets.images.q02n;
+      case WeatherIcon.THE_03_D:
+        return Assets.images.q03d;
+      case WeatherIcon.THE_03_N:
+        return Assets.images.q03n;
+      case WeatherIcon.THE_04_D:
+        return Assets.images.q04d;
+      case WeatherIcon.THE_04_N:
+        return Assets.images.q04n;
+      case WeatherIcon.THE_09_D:
+        return Assets.images.q09d;
+      case WeatherIcon.THE_09_N:
+        return Assets.images.q09n;
+      case WeatherIcon.THE_10_D:
+        return Assets.images.q10d;
+      case WeatherIcon.THE_10_N:
+        return Assets.images.q10n;
+      case WeatherIcon.THE_11_D:
+        return Assets.images.q11d;
+      case WeatherIcon.THE_11_N:
+        return Assets.images.q11n;
+      case WeatherIcon.THE_13_D:
+        return Assets.images.q13d;
+      case WeatherIcon.THE_13_N:
+        return Assets.images.q13n;
+      case WeatherIcon.THE_50_D:
+        return Assets.images.q50d;
+      case WeatherIcon.THE_50_N:
+        return Assets.images.q50n;
+    }
+  }
+}
+
 final iconValues = EnumValues({
-  '01d': Icon.THE_01_D,
-  '01n': Icon.THE_01_N,
-  '02d': Icon.THE_02_D,
-  '02n': Icon.THE_02_N,
-  '03d': Icon.THE_03_D,
-  '03n': Icon.THE_03_N,
-  '04d': Icon.THE_04_D,
-  '04n': Icon.THE_04_N,
-  '09d': Icon.THE_09_D,
-  '09n': Icon.THE_09_N,
-  '10d': Icon.THE_10_D,
-  '10n': Icon.THE_10_N,
-  '11d': Icon.THE_11_D,
-  '11n': Icon.THE_11_N,
-  '13d': Icon.THE_13_D,
-  '13n': Icon.THE_13_N,
-  '50d': Icon.THE_50_D,
-  '50n': Icon.THE_50_N,
+  '01d': WeatherIcon.THE_01_D,
+  '01n': WeatherIcon.THE_01_N,
+  '02d': WeatherIcon.THE_02_D,
+  '02n': WeatherIcon.THE_02_N,
+  '03d': WeatherIcon.THE_03_D,
+  '03n': WeatherIcon.THE_03_N,
+  '04d': WeatherIcon.THE_04_D,
+  '04n': WeatherIcon.THE_04_N,
+  '09d': WeatherIcon.THE_09_D,
+  '09n': WeatherIcon.THE_09_N,
+  '10d': WeatherIcon.THE_10_D,
+  '10n': WeatherIcon.THE_10_N,
+  '11d': WeatherIcon.THE_11_D,
+  '11n': WeatherIcon.THE_11_N,
+  '13d': WeatherIcon.THE_13_D,
+  '13n': WeatherIcon.THE_13_N,
+  '50d': WeatherIcon.THE_50_D,
+  '50n': WeatherIcon.THE_50_N,
 });
 
 enum WeatherType {
@@ -184,12 +273,12 @@ enum WeatherType {
   SNOW
 }
 
-final mainValues = EnumValues({
-  'Clear': WeatherType.CLEAR,
-  'Clouds': WeatherType.CLOUDS,
-  'Rain': WeatherType.RAIN,
-  'Snow': WeatherType.SNOW
-});
+final mainWeatherValues = {
+  WeatherType.CLEAR: 'Clear',
+  WeatherType.CLOUDS: 'Clouds',
+  WeatherType.RAIN: 'Rain',
+  WeatherType.SNOW: 'Snow',
+};
 
 @freezed
 class Daily with _$Daily {
@@ -207,8 +296,6 @@ class Daily with _$Daily {
     @JsonKey(name: 'humidity') required int humidity,
     @JsonKey(name: 'dew_point') required double dewPoint,
     @JsonKey(name: 'wind_speed') required double windSpeed,
-    @JsonKey(name: 'wind_deg') required int windDeg,
-    @JsonKey(name: 'wind_gust') required double windGust,
     @JsonKey(name: 'weather') required List<Weather> weather,
     @JsonKey(name: 'clouds') required int clouds,
     @JsonKey(name: 'pop') required double pop,

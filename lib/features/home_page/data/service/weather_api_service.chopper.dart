@@ -20,11 +20,11 @@ final class _$OpenWeatherApi extends OpenWeatherApi {
   @override
   Future<Response<dynamic>> getWeatherData({
     required double lat,
-    required double lon,
+    required double lng,
     required String units,
   }) {
     final Uri $url = Uri.parse(
-        'data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=alerts,minutely&appid=3880eab967f9c74b828319e49a7b74a2&units=${units}');
+        'data/3.0/onecall?lat=${lat}&lon=${lng}&exclude=alerts,minutely&appid=3880eab967f9c74b828319e49a7b74a2&units=${units}');
     final Request $request = Request(
       'GET',
       $url,

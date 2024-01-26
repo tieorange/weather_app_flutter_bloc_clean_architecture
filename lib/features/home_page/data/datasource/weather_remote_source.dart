@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:chopper/chopper.dart';
 import 'package:weather_app_flutter/core/error/exceptions.dart';
@@ -8,9 +9,9 @@ import 'package:weather_app_flutter/features/home_page/data/service/geo_coding_a
 import 'package:weather_app_flutter/features/home_page/data/service/weather_api_service.dart';
 
 abstract class WeatherRemoteSource {
-  Future<WeatherDto> getWeatherData({
+  Future<WeatherDto?> getWeatherData({
     required double lat,
-    required double lon,
+    required double lng,
     required String units,
   });
 
@@ -24,14 +25,14 @@ class WeatherRemoteSourceImpl implements WeatherRemoteSource {
   final GeoCodingApi _geoCodingApi;
 
   @override
-  Future<WeatherDto> getWeatherData({
+  Future<WeatherDto?> getWeatherData({
     required double lat,
-    required double lon,
+    required double lng,
     required String units,
   }) async {
     final response = await _weatherApi.getWeatherData(
-      lat: 50.6189703,
-      lon: 26.2496316,
+      lat: lat,
+      lng: lng,
       units: units,
     );
 
@@ -46,13 +47,17 @@ class WeatherRemoteSourceImpl implements WeatherRemoteSource {
     }
   }
 
-  WeatherDto _parseWeatherJson(Response<dynamic> response) {
-    final decoded = json.decode(response.bodyString) as Map<String, dynamic>;
+  WeatherDto? _parseWeatherJson(Response<dynamic> response) {
+    try {
+      final decoded = json.decode(response.bodyString) as Map<String, dynamic>;
 
-    final responseDto = WeatherDto.fromJson(decoded);
-    print(responseDto);
+      final responseDto = WeatherDto.fromJson(decoded);
 
-    return responseDto;
+      return responseDto;
+    } catch (e) {
+      log(e.toString());
+      rethrow;
+    }
   }
 
   @override
@@ -63,22 +68,25 @@ class WeatherRemoteSourceImpl implements WeatherRemoteSource {
       if (response.body == null) {
         throw const ServerException(message: 'Data from serve is empty');
       } else {
-        return _parseGeocodingJson(response);
+        return _parseGeocodingJson(response) ?? [];
       }
     } else {
       throw const ServerException(message: 'Error while fetching data');
     }
   }
 
-  List<GeocodingDto> _parseGeocodingJson(Response<dynamic> response) {
-    final jsonAsList = json.decode(response.bodyString) as List;
-    final responseDto = jsonAsList.map(processGeoCoding).toList();
+  List<GeocodingDto>? _parseGeocodingJson(Response<dynamic> response) {
+    try {
+      final jsonAsList = json.decode(response.bodyString) as List;
+      final responseDto = jsonAsList.map(processGeoCoding).toList();
 
-    print(responseDto);
-
-    return responseDto;
+      return responseDto;
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
   }
 
-  GeocodingDto processGeoCoding(i) =>
+  GeocodingDto processGeoCoding(dynamic i) =>
       GeocodingDto.fromJson(i as Map<String, dynamic>);
 }

@@ -28,14 +28,15 @@ class WeatherRepositoryImpl implements WeatherRepository {
       try {
         final response = await _dataSource.getWeatherData(
           lat: lat,
-          lon: lon,
+          lng: lon,
           units: units,
         );
 
-        // TODO: Store data for offline use
-        // saveInLocalStorage(response);
-
-        return Right(response);
+        if (response == null) {
+          return const Left(ServerFailure(message: 'Response parsing error'));
+        } else {
+          return Right(response);
+        }
       } on ServerException catch (e) {
         return Left(ServerFailure(message: e.message));
       } catch (e) {
@@ -54,11 +55,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
 
     if (isConnected) {
       try {
-        final response =
-            await _dataSource.getCityByName(cityName: cityName);
-
-        // TODO: Store data for offline use
-        // saveInLocalStorage(response);
+        final response = await _dataSource.getCityByName(cityName: cityName);
 
         return Right(response);
       } on ServerException catch (e) {
@@ -71,23 +68,3 @@ class WeatherRepositoryImpl implements WeatherRepository {
     }
   }
 }
-
-/*
-  Future<Either<Failure, T>> _doRequest<T>(FutureOr<T> computation()) async {
-    final hasConnection = await _networkInfo.isConnected;
-    if (!hasConnection) {
-      return Left(NetworkFailure());
-    }
-
-    try {
-      T result = await computation();
-      return Right(result);
-    } on ServerException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on AuthenticationException catch (e) {
-      return Left(AuthenticationFailure(e.message));
-    } on DirectedCondensingException catch (e) {
-      return Left(DirectedCondensingFailure(e.message));
-    }
-  }
-  */

@@ -37,8 +37,6 @@ class CurrentWeather with _$CurrentWeather {
     @JsonKey(name: 'clouds') required int clouds,
     @JsonKey(name: 'visibility') int? visibility,
     @JsonKey(name: 'wind_speed') required double windSpeed,
-    @JsonKey(name: 'wind_deg') required int windDeg,
-    @JsonKey(name: 'wind_gust') required double windGust,
     @JsonKey(name: 'weather') required List<Weather> weather,
     @JsonKey(name: 'pop') double? pop,
     @JsonKey(name: 'snow') Rain? snow,
@@ -98,6 +96,36 @@ enum Description {
   THUNDERSTORM,
   @JsonValue('mist')
   MIST,
+  @JsonValue('moderate rain')
+  MODERATE_RAIN,
+  @JsonValue('heavy intensity rain')
+  HEAVY_INTENSITY_RAIN,
+  @JsonValue('heavy rain')
+  HEAVY_RAIN,
+  @JsonValue('light intensity drizzle')
+  LIGHT_INTENSITY_DRIZZLE,
+  @JsonValue('light drizzle')
+  LIGHT_DRIZZLE,
+  @JsonValue('moderate drizzle')
+  MODERATE_DRIZZLE,
+  @JsonValue('heavy intensity drizzle')
+  HEAVY_INTENSITY_DRIZZLE,
+  @JsonValue('heavy drizzle')
+  HEAVY_DRIZZLE,
+  @JsonValue('shower rain and drizzle')
+  SHOWER_RAIN_AND_DRIZZLE,
+  @JsonValue('shower drizzle')
+  SHOWER_DRIZZLE,
+  @JsonValue('heavy intensity shower rain')
+  HEAVY_INTENSITY_SHOWER_RAIN,
+  @JsonValue('heavy shower rain')
+  HEAVY_SHOWER_RAIN,
+  @JsonValue('ragged shower rain')
+  RAGGED_SHOWER_RAIN,
+  @JsonValue('shower snow')
+  SHOWER_SNOW,
+  @JsonValue('rain snow')
+  RAIN_SNOW,
 }
 
 final weatherDescriptionValues = {
@@ -114,6 +142,21 @@ final weatherDescriptionValues = {
   Description.RAIN: 'rain',
   Description.THUNDERSTORM: 'thunderstorm',
   Description.MIST: 'mist',
+  Description.MODERATE_RAIN: 'moderate rain',
+  Description.HEAVY_INTENSITY_RAIN: 'heavy intensity rain',
+  Description.HEAVY_RAIN: 'heavy rain',
+  Description.LIGHT_INTENSITY_DRIZZLE: 'light intensity drizzle',
+  Description.LIGHT_DRIZZLE: 'light drizzle',
+  Description.MODERATE_DRIZZLE: 'moderate drizzle',
+  Description.HEAVY_INTENSITY_DRIZZLE: 'heavy intensity drizzle',
+  Description.HEAVY_DRIZZLE: 'heavy drizzle',
+  Description.SHOWER_RAIN_AND_DRIZZLE: 'shower rain and drizzle',
+  Description.SHOWER_DRIZZLE: 'shower drizzle',
+  Description.HEAVY_INTENSITY_SHOWER_RAIN: 'heavy intensity shower rain',
+  Description.HEAVY_SHOWER_RAIN: 'heavy shower rain',
+  Description.RAGGED_SHOWER_RAIN: 'ragged shower rain',
+  Description.SHOWER_SNOW: 'shower snow',
+  Description.RAIN_SNOW: 'rain snow',
 };
 
 enum WeatherIcon {
@@ -253,8 +296,6 @@ class Daily with _$Daily {
     @JsonKey(name: 'humidity') required int humidity,
     @JsonKey(name: 'dew_point') required double dewPoint,
     @JsonKey(name: 'wind_speed') required double windSpeed,
-    @JsonKey(name: 'wind_deg') required int windDeg,
-    @JsonKey(name: 'wind_gust') required double windGust,
     @JsonKey(name: 'weather') required List<Weather> weather,
     @JsonKey(name: 'clouds') required int clouds,
     @JsonKey(name: 'pop') required double pop,

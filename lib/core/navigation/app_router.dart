@@ -23,7 +23,7 @@ enum AppRoutes {
 
 abstract class AppRouter {
   static final List<AppRoutes> history = [];
-  static final initRouter = AppRoutes.splashScreen.routeName;
+  static final initRouter = AppRoutes.home.routeName;
   static final Map<String, Widget Function(BuildContext context)> routes = {
     AppRoutes.splashScreen.routeName: (context) {
       return SplashPage();

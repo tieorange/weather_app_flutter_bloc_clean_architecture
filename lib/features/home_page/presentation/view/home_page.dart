@@ -11,8 +11,8 @@ import 'package:weather_app_flutter/features/home_page/presentation/bloc/home_cu
 import 'package:weather_app_flutter/features/home_page/presentation/view/home_body.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key}){
-   print('HomePage');
+  HomePage({super.key}) {
+    print('HomePage');
   }
 
   @override
@@ -73,13 +73,27 @@ class _HomePageState extends State<HomePage> {
         },
         onTap: controller.clear,
         maxLines: 1,
+        isLatLngRequired: true,
         overlayContainer: (child) => Material(
           elevation: 1,
           borderRadius: BorderRadius.circular(12),
           child: child,
         ),
-        getPlaceDetailWithLatLng: (prediction) =>
-            log('getPlaceDetailWithLatLng'),
+        getPlaceDetailWithLatLng: (prediction) {
+          final placeNameMain =
+              prediction.structuredFormatting?.mainText ?? 'Unknown city';
+          final placeNameSecondary =
+              prediction.structuredFormatting?.secondaryText;
+          final lat = prediction.lat;
+          final lng = prediction.lng;
+
+          context.read<HomePageCubit>().getWeatherForPlace(
+                placeNameMain,
+                placeNameSecondary,
+                lat,
+                lng,
+              );
+        },
         itmClick: _onClickSearchItem,
       ),
     );
@@ -133,19 +147,6 @@ class _HomePageState extends State<HomePage> {
       ..selection = TextSelection.fromPosition(
         TextPosition(offset: description.length),
       );
-
-    final placeNameMain =
-        prediction.structuredFormatting?.mainText ?? 'Unknown city';
-    final placeNameSecondary = prediction.structuredFormatting?.secondaryText;
-    final lat = prediction.lat;
-    final lng = prediction.lng;
-
-    context.read<HomePageCubit>().getWeatherForPlace(
-          placeNameMain,
-          placeNameSecondary,
-          lat,
-          lng,
-        );
   }
 
   @override

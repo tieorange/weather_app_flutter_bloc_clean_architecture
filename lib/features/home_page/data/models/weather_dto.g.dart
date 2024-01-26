@@ -46,8 +46,6 @@ _$CurrentImpl _$$CurrentImplFromJson(Map<String, dynamic> json) =>
       clouds: json['clouds'] as int,
       visibility: json['visibility'] as int?,
       windSpeed: (json['wind_speed'] as num).toDouble(),
-      windDeg: json['wind_deg'] as int,
-      windGust: (json['wind_gust'] as num).toDouble(),
       weather: (json['weather'] as List<dynamic>)
           .map((e) => Weather.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -74,8 +72,6 @@ Map<String, dynamic> _$$CurrentImplToJson(_$CurrentImpl instance) =>
       'clouds': instance.clouds,
       'visibility': instance.visibility,
       'wind_speed': instance.windSpeed,
-      'wind_deg': instance.windDeg,
-      'wind_gust': instance.windGust,
       'weather': instance.weather,
       'pop': instance.pop,
       'snow': instance.snow,
@@ -128,6 +124,21 @@ const _$DescriptionEnumMap = {
   Description.RAIN: 'rain',
   Description.THUNDERSTORM: 'thunderstorm',
   Description.MIST: 'mist',
+  Description.MODERATE_RAIN: 'moderate rain',
+  Description.HEAVY_INTENSITY_RAIN: 'heavy intensity rain',
+  Description.HEAVY_RAIN: 'heavy rain',
+  Description.LIGHT_INTENSITY_DRIZZLE: 'light intensity drizzle',
+  Description.LIGHT_DRIZZLE: 'light drizzle',
+  Description.MODERATE_DRIZZLE: 'moderate drizzle',
+  Description.HEAVY_INTENSITY_DRIZZLE: 'heavy intensity drizzle',
+  Description.HEAVY_DRIZZLE: 'heavy drizzle',
+  Description.SHOWER_RAIN_AND_DRIZZLE: 'shower rain and drizzle',
+  Description.SHOWER_DRIZZLE: 'shower drizzle',
+  Description.HEAVY_INTENSITY_SHOWER_RAIN: 'heavy intensity shower rain',
+  Description.HEAVY_SHOWER_RAIN: 'heavy shower rain',
+  Description.RAGGED_SHOWER_RAIN: 'ragged shower rain',
+  Description.SHOWER_SNOW: 'shower snow',
+  Description.RAIN_SNOW: 'rain snow',
 };
 
 const _$WeatherIconEnumMap = {
@@ -165,8 +176,6 @@ _$DailyImpl _$$DailyImplFromJson(Map<String, dynamic> json) => _$DailyImpl(
       humidity: json['humidity'] as int,
       dewPoint: (json['dew_point'] as num).toDouble(),
       windSpeed: (json['wind_speed'] as num).toDouble(),
-      windDeg: json['wind_deg'] as int,
-      windGust: (json['wind_gust'] as num).toDouble(),
       weather: (json['weather'] as List<dynamic>)
           .map((e) => Weather.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -192,8 +201,6 @@ Map<String, dynamic> _$$DailyImplToJson(_$DailyImpl instance) =>
       'humidity': instance.humidity,
       'dew_point': instance.dewPoint,
       'wind_speed': instance.windSpeed,
-      'wind_deg': instance.windDeg,
-      'wind_gust': instance.windGust,
       'weather': instance.weather,
       'clouds': instance.clouds,
       'pop': instance.pop,

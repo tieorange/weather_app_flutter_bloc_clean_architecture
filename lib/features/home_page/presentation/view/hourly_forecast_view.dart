@@ -6,8 +6,8 @@ import 'package:weather_app_flutter/features/home_page/data/models/weather_dto.d
 
 class HourlyForecastView extends StatelessWidget {
   const HourlyForecastView({
-    super.key,
     required this.data,
+    super.key,
   });
 
   final WeatherDto data;

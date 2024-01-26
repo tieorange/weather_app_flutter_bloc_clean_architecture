@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         titleSpacing: 0,
       ),
-      body: SafeArea(child: const HomePageView()),
+      body: const HomePageView(),
       floatingActionButton: Animate(
         child: FloatingActionButton.extended(
           onPressed: () {

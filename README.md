@@ -1,9 +1,8 @@
 # Weather App Flutter
 
-![coverage][coverage_badge]
-[![License: MIT][license_badge]][license_link]
-
 Weather app made in Flutter
+
+https://github.com/tieorange/weather_app_flutter_bloc_clean_architecture/assets/3984517/d248695d-4d53-48fb-be21-0f7b95373ba6
 
 ---
 

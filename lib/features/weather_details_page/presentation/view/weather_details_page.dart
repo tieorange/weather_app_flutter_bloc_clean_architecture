@@ -38,14 +38,12 @@ class _WeatherDetailsPageState extends State<WeatherDetailsPage> {
       appBar: AppBar(
         title: Text(state.params.placeNameMain),
       ),
-      body: SafeArea(
-        child: ListView.builder(
-          itemCount: data.length,
-          itemBuilder: (context, index) {
-            final item = data[index];
-            return _buildListItem(item, context);
-          },
-        ),
+      body: ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, index) {
+          final item = data[index];
+          return _buildListItem(item, context);
+        },
       ),
     );
   }
@@ -119,7 +117,7 @@ class _WeatherDetailsPageState extends State<WeatherDetailsPage> {
             ),
           ),
         ),
-      ).animate().fade(delay: 100.ms).then().slideX().then().shimmer(),
+      ).animate().fade(delay: 20.ms).then().slideX().then().shimmer(),
     );
   }
 

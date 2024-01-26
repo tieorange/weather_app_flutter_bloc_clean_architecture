@@ -361,10 +361,6 @@ mixin _$CurrentWeather {
   int? get visibility => throw _privateConstructorUsedError;
   @JsonKey(name: 'wind_speed')
   double get windSpeed => throw _privateConstructorUsedError;
-  @JsonKey(name: 'wind_deg')
-  int get windDeg => throw _privateConstructorUsedError;
-  @JsonKey(name: 'wind_gust')
-  double get windGust => throw _privateConstructorUsedError;
   @JsonKey(name: 'weather')
   List<Weather> get weather => throw _privateConstructorUsedError;
   @JsonKey(name: 'pop')
@@ -399,8 +395,6 @@ abstract class $CurrentWeatherCopyWith<$Res> {
       @JsonKey(name: 'clouds') int clouds,
       @JsonKey(name: 'visibility') int? visibility,
       @JsonKey(name: 'wind_speed') double windSpeed,
-      @JsonKey(name: 'wind_deg') int windDeg,
-      @JsonKey(name: 'wind_gust') double windGust,
       @JsonKey(name: 'weather') List<Weather> weather,
       @JsonKey(name: 'pop') double? pop,
       @JsonKey(name: 'snow') Rain? snow,
@@ -435,8 +429,6 @@ class _$CurrentWeatherCopyWithImpl<$Res, $Val extends CurrentWeather>
     Object? clouds = null,
     Object? visibility = freezed,
     Object? windSpeed = null,
-    Object? windDeg = null,
-    Object? windGust = null,
     Object? weather = null,
     Object? pop = freezed,
     Object? snow = freezed,
@@ -490,14 +482,6 @@ class _$CurrentWeatherCopyWithImpl<$Res, $Val extends CurrentWeather>
       windSpeed: null == windSpeed
           ? _value.windSpeed
           : windSpeed // ignore: cast_nullable_to_non_nullable
-              as double,
-      windDeg: null == windDeg
-          ? _value.windDeg
-          : windDeg // ignore: cast_nullable_to_non_nullable
-              as int,
-      windGust: null == windGust
-          ? _value.windGust
-          : windGust // ignore: cast_nullable_to_non_nullable
               as double,
       weather: null == weather
           ? _value.weather
@@ -564,8 +548,6 @@ abstract class _$$CurrentImplCopyWith<$Res>
       @JsonKey(name: 'clouds') int clouds,
       @JsonKey(name: 'visibility') int? visibility,
       @JsonKey(name: 'wind_speed') double windSpeed,
-      @JsonKey(name: 'wind_deg') int windDeg,
-      @JsonKey(name: 'wind_gust') double windGust,
       @JsonKey(name: 'weather') List<Weather> weather,
       @JsonKey(name: 'pop') double? pop,
       @JsonKey(name: 'snow') Rain? snow,
@@ -600,8 +582,6 @@ class __$$CurrentImplCopyWithImpl<$Res>
     Object? clouds = null,
     Object? visibility = freezed,
     Object? windSpeed = null,
-    Object? windDeg = null,
-    Object? windGust = null,
     Object? weather = null,
     Object? pop = freezed,
     Object? snow = freezed,
@@ -656,14 +636,6 @@ class __$$CurrentImplCopyWithImpl<$Res>
           ? _value.windSpeed
           : windSpeed // ignore: cast_nullable_to_non_nullable
               as double,
-      windDeg: null == windDeg
-          ? _value.windDeg
-          : windDeg // ignore: cast_nullable_to_non_nullable
-              as int,
-      windGust: null == windGust
-          ? _value.windGust
-          : windGust // ignore: cast_nullable_to_non_nullable
-              as double,
       weather: null == weather
           ? _value._weather
           : weather // ignore: cast_nullable_to_non_nullable
@@ -700,8 +672,6 @@ class _$CurrentImpl implements _Current {
       @JsonKey(name: 'clouds') required this.clouds,
       @JsonKey(name: 'visibility') this.visibility,
       @JsonKey(name: 'wind_speed') required this.windSpeed,
-      @JsonKey(name: 'wind_deg') required this.windDeg,
-      @JsonKey(name: 'wind_gust') required this.windGust,
       @JsonKey(name: 'weather') required final List<Weather> weather,
       @JsonKey(name: 'pop') this.pop,
       @JsonKey(name: 'snow') this.snow,
@@ -747,12 +717,6 @@ class _$CurrentImpl implements _Current {
   @override
   @JsonKey(name: 'wind_speed')
   final double windSpeed;
-  @override
-  @JsonKey(name: 'wind_deg')
-  final int windDeg;
-  @override
-  @JsonKey(name: 'wind_gust')
-  final double windGust;
   final List<Weather> _weather;
   @override
   @JsonKey(name: 'weather')
@@ -774,7 +738,7 @@ class _$CurrentImpl implements _Current {
 
   @override
   String toString() {
-    return 'CurrentWeather(dt: $dt, sunrise: $sunrise, sunset: $sunset, temp: $temp, feelsLike: $feelsLike, pressure: $pressure, humidity: $humidity, dewPoint: $dewPoint, uvi: $uvi, clouds: $clouds, visibility: $visibility, windSpeed: $windSpeed, windDeg: $windDeg, windGust: $windGust, weather: $weather, pop: $pop, snow: $snow, rain: $rain)';
+    return 'CurrentWeather(dt: $dt, sunrise: $sunrise, sunset: $sunset, temp: $temp, feelsLike: $feelsLike, pressure: $pressure, humidity: $humidity, dewPoint: $dewPoint, uvi: $uvi, clouds: $clouds, visibility: $visibility, windSpeed: $windSpeed, weather: $weather, pop: $pop, snow: $snow, rain: $rain)';
   }
 
   @override
@@ -800,9 +764,6 @@ class _$CurrentImpl implements _Current {
                 other.visibility == visibility) &&
             (identical(other.windSpeed, windSpeed) ||
                 other.windSpeed == windSpeed) &&
-            (identical(other.windDeg, windDeg) || other.windDeg == windDeg) &&
-            (identical(other.windGust, windGust) ||
-                other.windGust == windGust) &&
             const DeepCollectionEquality().equals(other._weather, _weather) &&
             (identical(other.pop, pop) || other.pop == pop) &&
             (identical(other.snow, snow) || other.snow == snow) &&
@@ -825,8 +786,6 @@ class _$CurrentImpl implements _Current {
       clouds,
       visibility,
       windSpeed,
-      windDeg,
-      windGust,
       const DeepCollectionEquality().hash(_weather),
       pop,
       snow,
@@ -860,8 +819,6 @@ abstract class _Current implements CurrentWeather {
       @JsonKey(name: 'clouds') required final int clouds,
       @JsonKey(name: 'visibility') final int? visibility,
       @JsonKey(name: 'wind_speed') required final double windSpeed,
-      @JsonKey(name: 'wind_deg') required final int windDeg,
-      @JsonKey(name: 'wind_gust') required final double windGust,
       @JsonKey(name: 'weather') required final List<Weather> weather,
       @JsonKey(name: 'pop') final double? pop,
       @JsonKey(name: 'snow') final Rain? snow,
@@ -905,12 +862,6 @@ abstract class _Current implements CurrentWeather {
   @override
   @JsonKey(name: 'wind_speed')
   double get windSpeed;
-  @override
-  @JsonKey(name: 'wind_deg')
-  int get windDeg;
-  @override
-  @JsonKey(name: 'wind_gust')
-  double get windGust;
   @override
   @JsonKey(name: 'weather')
   List<Weather> get weather;
@@ -1077,7 +1028,7 @@ mixin _$Weather {
   @JsonKey(name: 'description')
   Description get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'icon')
-  Icon get icon => throw _privateConstructorUsedError;
+  WeatherIcon get icon => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1093,7 +1044,7 @@ abstract class $WeatherCopyWith<$Res> {
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'main') WeatherType main,
       @JsonKey(name: 'description') Description description,
-      @JsonKey(name: 'icon') Icon icon});
+      @JsonKey(name: 'icon') WeatherIcon icon});
 }
 
 /// @nodoc
@@ -1130,7 +1081,7 @@ class _$WeatherCopyWithImpl<$Res, $Val extends Weather>
       icon: null == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
-              as Icon,
+              as WeatherIcon,
     ) as $Val);
   }
 }
@@ -1146,7 +1097,7 @@ abstract class _$$WeatherImplCopyWith<$Res> implements $WeatherCopyWith<$Res> {
       {@JsonKey(name: 'id') int id,
       @JsonKey(name: 'main') WeatherType main,
       @JsonKey(name: 'description') Description description,
-      @JsonKey(name: 'icon') Icon icon});
+      @JsonKey(name: 'icon') WeatherIcon icon});
 }
 
 /// @nodoc
@@ -1181,7 +1132,7 @@ class __$$WeatherImplCopyWithImpl<$Res>
       icon: null == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
-              as Icon,
+              as WeatherIcon,
     ));
   }
 }
@@ -1209,7 +1160,7 @@ class _$WeatherImpl implements _Weather {
   final Description description;
   @override
   @JsonKey(name: 'icon')
-  final Icon icon;
+  final WeatherIcon icon;
 
   @override
   String toString() {
@@ -1251,7 +1202,7 @@ abstract class _Weather implements Weather {
       {@JsonKey(name: 'id') required final int id,
       @JsonKey(name: 'main') required final WeatherType main,
       @JsonKey(name: 'description') required final Description description,
-      @JsonKey(name: 'icon') required final Icon icon}) = _$WeatherImpl;
+      @JsonKey(name: 'icon') required final WeatherIcon icon}) = _$WeatherImpl;
 
   factory _Weather.fromJson(Map<String, dynamic> json) = _$WeatherImpl.fromJson;
 
@@ -1266,7 +1217,7 @@ abstract class _Weather implements Weather {
   Description get description;
   @override
   @JsonKey(name: 'icon')
-  Icon get icon;
+  WeatherIcon get icon;
   @override
   @JsonKey(ignore: true)
   _$$WeatherImplCopyWith<_$WeatherImpl> get copyWith =>
@@ -1305,10 +1256,6 @@ mixin _$Daily {
   double get dewPoint => throw _privateConstructorUsedError;
   @JsonKey(name: 'wind_speed')
   double get windSpeed => throw _privateConstructorUsedError;
-  @JsonKey(name: 'wind_deg')
-  int get windDeg => throw _privateConstructorUsedError;
-  @JsonKey(name: 'wind_gust')
-  double get windGust => throw _privateConstructorUsedError;
   @JsonKey(name: 'weather')
   List<Weather> get weather => throw _privateConstructorUsedError;
   @JsonKey(name: 'clouds')
@@ -1346,8 +1293,6 @@ abstract class $DailyCopyWith<$Res> {
       @JsonKey(name: 'humidity') int humidity,
       @JsonKey(name: 'dew_point') double dewPoint,
       @JsonKey(name: 'wind_speed') double windSpeed,
-      @JsonKey(name: 'wind_deg') int windDeg,
-      @JsonKey(name: 'wind_gust') double windGust,
       @JsonKey(name: 'weather') List<Weather> weather,
       @JsonKey(name: 'clouds') int clouds,
       @JsonKey(name: 'pop') double pop,
@@ -1385,8 +1330,6 @@ class _$DailyCopyWithImpl<$Res, $Val extends Daily>
     Object? humidity = null,
     Object? dewPoint = null,
     Object? windSpeed = null,
-    Object? windDeg = null,
-    Object? windGust = null,
     Object? weather = null,
     Object? clouds = null,
     Object? pop = null,
@@ -1446,14 +1389,6 @@ class _$DailyCopyWithImpl<$Res, $Val extends Daily>
       windSpeed: null == windSpeed
           ? _value.windSpeed
           : windSpeed // ignore: cast_nullable_to_non_nullable
-              as double,
-      windDeg: null == windDeg
-          ? _value.windDeg
-          : windDeg // ignore: cast_nullable_to_non_nullable
-              as int,
-      windGust: null == windGust
-          ? _value.windGust
-          : windGust // ignore: cast_nullable_to_non_nullable
               as double,
       weather: null == weather
           ? _value.weather
@@ -1520,8 +1455,6 @@ abstract class _$$DailyImplCopyWith<$Res> implements $DailyCopyWith<$Res> {
       @JsonKey(name: 'humidity') int humidity,
       @JsonKey(name: 'dew_point') double dewPoint,
       @JsonKey(name: 'wind_speed') double windSpeed,
-      @JsonKey(name: 'wind_deg') int windDeg,
-      @JsonKey(name: 'wind_gust') double windGust,
       @JsonKey(name: 'weather') List<Weather> weather,
       @JsonKey(name: 'clouds') int clouds,
       @JsonKey(name: 'pop') double pop,
@@ -1559,8 +1492,6 @@ class __$$DailyImplCopyWithImpl<$Res>
     Object? humidity = null,
     Object? dewPoint = null,
     Object? windSpeed = null,
-    Object? windDeg = null,
-    Object? windGust = null,
     Object? weather = null,
     Object? clouds = null,
     Object? pop = null,
@@ -1621,14 +1552,6 @@ class __$$DailyImplCopyWithImpl<$Res>
           ? _value.windSpeed
           : windSpeed // ignore: cast_nullable_to_non_nullable
               as double,
-      windDeg: null == windDeg
-          ? _value.windDeg
-          : windDeg // ignore: cast_nullable_to_non_nullable
-              as int,
-      windGust: null == windGust
-          ? _value.windGust
-          : windGust // ignore: cast_nullable_to_non_nullable
-              as double,
       weather: null == weather
           ? _value._weather
           : weather // ignore: cast_nullable_to_non_nullable
@@ -1674,8 +1597,6 @@ class _$DailyImpl implements _Daily {
       @JsonKey(name: 'humidity') required this.humidity,
       @JsonKey(name: 'dew_point') required this.dewPoint,
       @JsonKey(name: 'wind_speed') required this.windSpeed,
-      @JsonKey(name: 'wind_deg') required this.windDeg,
-      @JsonKey(name: 'wind_gust') required this.windGust,
       @JsonKey(name: 'weather') required final List<Weather> weather,
       @JsonKey(name: 'clouds') required this.clouds,
       @JsonKey(name: 'pop') required this.pop,
@@ -1726,12 +1647,6 @@ class _$DailyImpl implements _Daily {
   @override
   @JsonKey(name: 'wind_speed')
   final double windSpeed;
-  @override
-  @JsonKey(name: 'wind_deg')
-  final int windDeg;
-  @override
-  @JsonKey(name: 'wind_gust')
-  final double windGust;
   final List<Weather> _weather;
   @override
   @JsonKey(name: 'weather')
@@ -1759,7 +1674,7 @@ class _$DailyImpl implements _Daily {
 
   @override
   String toString() {
-    return 'Daily(dt: $dt, sunrise: $sunrise, sunset: $sunset, moonrise: $moonrise, moonset: $moonset, moonPhase: $moonPhase, summary: $summary, temp: $temp, feelsLike: $feelsLike, pressure: $pressure, humidity: $humidity, dewPoint: $dewPoint, windSpeed: $windSpeed, windDeg: $windDeg, windGust: $windGust, weather: $weather, clouds: $clouds, pop: $pop, rain: $rain, snow: $snow, uvi: $uvi)';
+    return 'Daily(dt: $dt, sunrise: $sunrise, sunset: $sunset, moonrise: $moonrise, moonset: $moonset, moonPhase: $moonPhase, summary: $summary, temp: $temp, feelsLike: $feelsLike, pressure: $pressure, humidity: $humidity, dewPoint: $dewPoint, windSpeed: $windSpeed, weather: $weather, clouds: $clouds, pop: $pop, rain: $rain, snow: $snow, uvi: $uvi)';
   }
 
   @override
@@ -1787,9 +1702,6 @@ class _$DailyImpl implements _Daily {
                 other.dewPoint == dewPoint) &&
             (identical(other.windSpeed, windSpeed) ||
                 other.windSpeed == windSpeed) &&
-            (identical(other.windDeg, windDeg) || other.windDeg == windDeg) &&
-            (identical(other.windGust, windGust) ||
-                other.windGust == windGust) &&
             const DeepCollectionEquality().equals(other._weather, _weather) &&
             (identical(other.clouds, clouds) || other.clouds == clouds) &&
             (identical(other.pop, pop) || other.pop == pop) &&
@@ -1815,8 +1727,6 @@ class _$DailyImpl implements _Daily {
         humidity,
         dewPoint,
         windSpeed,
-        windDeg,
-        windGust,
         const DeepCollectionEquality().hash(_weather),
         clouds,
         pop,
@@ -1854,8 +1764,6 @@ abstract class _Daily implements Daily {
       @JsonKey(name: 'humidity') required final int humidity,
       @JsonKey(name: 'dew_point') required final double dewPoint,
       @JsonKey(name: 'wind_speed') required final double windSpeed,
-      @JsonKey(name: 'wind_deg') required final int windDeg,
-      @JsonKey(name: 'wind_gust') required final double windGust,
       @JsonKey(name: 'weather') required final List<Weather> weather,
       @JsonKey(name: 'clouds') required final int clouds,
       @JsonKey(name: 'pop') required final double pop,
@@ -1904,12 +1812,6 @@ abstract class _Daily implements Daily {
   @override
   @JsonKey(name: 'wind_speed')
   double get windSpeed;
-  @override
-  @JsonKey(name: 'wind_deg')
-  int get windDeg;
-  @override
-  @JsonKey(name: 'wind_gust')
-  double get windGust;
   @override
   @JsonKey(name: 'weather')
   List<Weather> get weather;

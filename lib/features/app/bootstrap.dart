@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:weather_app_flutter/core/util/dependency_injection/dependency_injection.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -11,7 +12,8 @@ class AppBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     super.onChange(bloc, change);
-    log('onChange(${bloc.runtimeType}, $change)');
+    log('onChange(${bloc.runtimeType}, ${change.currentState.runtimeType} '
+        '-> ${change.nextState.runtimeType})');
   }
 
   @override
@@ -29,6 +31,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   Bloc.observer = const AppBlocObserver();
 
   await DependencyInjector.init();
+  Animate.restartOnHotReload = true;
 
   // Add cross-flavor configuration here
 

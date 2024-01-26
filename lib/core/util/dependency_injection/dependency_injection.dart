@@ -17,23 +17,23 @@ abstract class DependencyInjector {
     final geoCodingApi = ApiProvider.geoCodingApi;
     final weatherApi = ApiProvider.weatherApi;
     di
-      ..registerSingleton<WeatherRemoteSource>(
-        WeatherRemoteSourceImpl(weatherApi, geoCodingApi),
+      ..registerLazySingleton<WeatherRemoteSource>(
+        () => WeatherRemoteSourceImpl(weatherApi, geoCodingApi),
       )
-      ..registerSingleton<NetworkInfo>(
-        NetworkInfoImpl(InternetConnectionChecker()),
+      ..registerLazySingleton<NetworkInfo>(
+        () => NetworkInfoImpl(InternetConnectionChecker()),
       )
-      ..registerSingleton<WeatherRepository>(
-        WeatherRepositoryImpl(di(), di()),
+      ..registerLazySingleton<WeatherRepository>(
+        () => WeatherRepositoryImpl(di(), di()),
       )
-      ..registerSingleton<GetWeatherDataUseCase>(
-        GetWeatherDataUseCase(di()),
+      ..registerLazySingleton<GetWeatherDataUseCase>(
+        () => GetWeatherDataUseCase(di()),
       )
-      ..registerSingleton<GetCityByNameUseCase>(
-        GetCityByNameUseCase(di()),
+      ..registerLazySingleton<GetCityByNameUseCase>(
+        () => GetCityByNameUseCase(di()),
       )
-      ..registerSingleton<HomePageCubit>(
-        HomePageCubit(di(), di()),
+      ..registerLazySingleton<HomePageCubit>(
+        () => HomePageCubit(di(), di()),
       );
   }
 }

@@ -19,6 +19,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     final weather = widget._data.current;
+    final hourly = widget._data.hourly;
     return SingleChildScrollView(
       child: Center(
         child: Column(
@@ -38,6 +39,7 @@ class _HomeBodyState extends State<HomeBody> {
               style: Theme.of(context).textTheme.displaySmall,
             ),
             const SizedBox(height: 20),
+            Text('Hourly: ${buildHourly(hourly)} °C'),
             Text('Feels like: ${weather.feelsLike.round()} °C'),
             Text('Weather: ${mainWeatherValues[weather.weather[0].main]}'),
             Text('Description: '
@@ -53,5 +55,14 @@ class _HomeBodyState extends State<HomeBody> {
         ),
       ),
     );
+  }
+
+  String buildHourly(List<CurrentWeather> hourly) {
+    final list = hourly.map((e) {
+      return '${e.dt.formatTime()} - '
+          '${e.weather[0].icon} - '
+          '${e.temp.round()} °C \n';
+    }).toList();
+    return list.toString();
   }
 }
